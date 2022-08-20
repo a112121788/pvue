@@ -1,29 +1,29 @@
 # Pvue
 
-`pvue` 是 [vue](https://vuejs.org) 的优化的替代发行版。 它提供了与标准Vue相同的模板语法和响应式模型，
-不过它是专门为在现有的由服务器框架呈现的HTML页面上进行少量的交互准备的轻量级JS库。
+`pvue` 是 [vue](https://vuejs.org) 的优化的替代发行版。它提供了与标准 Vue 相同的模板语法和响应式模型，
+不过它是专门为在现有的由服务器框架呈现的 HTML 页面上进行少量的交互准备的轻量级 JS 库。
 
-- Only ~8kb
-- Vue-compatible template syntax
-- DOM-based, mutates in place
-- Driven by `@vue/reactivity`
+- 仅 ~8kb
+- Vue-兼容的模板语法
+- 基于 DOM, 原地变换
+- 由 `@vue/reactivity` 驱动
 
 ## 状态
 
 - This is pretty new. There are probably bugs and there might still be API changes, so **use at your own risk.** Is it
   usable though? Very much. Check out the [examples](https://github.com/vuejs/pvue/tree/main/examples) to see what it's
   capable of.
+- 这是非常新的。可能会有错误，也可能会有 API 更改，所以 **使用风险自负**。有用吗？查看 [示例](./examples)，看看它能做什么。
+  有能力。
 
-- The issue list is intentionally disabled because I have higher priority things to focus on for now and don't want to
-  be distracted. If you found a bug, you'll have to either workaround it or submit a PR to fix it yourself. That said,
-  feel free to use the discussions tab to help each other out.
+- 问题列表被故意禁用，因为我现在有更优先的事情要关注，不想分心。如果你发现了一个错误，你必须要么解决它，要么提交 PR 来自己修复它。 
+也就是说，请随意使用讨论选项卡来帮助彼此。
 
-- Feature requests are unlikely to be accepted at this time - the scope of this project is intentionally kept to a bare
-  minimum.
+- 功能请求目前不太可能被接受--这个项目的范围被故意保持在最低限度。
 
 ## 用法
 
-`pvue` can be used without a build step. Simply load it from a CDN:
+`pvue` 无需构建可使用，只需从 CDN 加载即可：
 
 ```html
 
@@ -36,13 +36,13 @@
 </div>
 ```
 
-- Use `v-scope` to mark regions on the page that should be controlled by `pvue`.
-- The `defer` attribute makes the script execute after HTML content is parsed.
-- The `init` attribute tells `pvue` to automatically query and initialize all elements that have `v-scope` on the page.
+- 使用 `v-scope` 在页面上标记应该由 `pvue` 控制的区域。
+- `defer` 属性使脚本在解析完 HTML 内容后执行。
+- `init` 属性告诉 `pvue` 自动查询并初始化页面上所有有 `v-scope` 的元素。
 
-### 手动 Init
+### 手动初始化
 
-If you don't want the auto init, remove the `init` attribute and move the scripts to end of `<body>`:
+如果您不想要自动初始化，可以去掉 `init` 属性，将脚本移到 `<BODY>` 的末尾：
 
 ```html
 
@@ -52,7 +52,7 @@ If you don't want the auto init, remove the `init` attribute and move the script
 </script>
 ```
 
-Or, use the ES module build:
+或者，使用 ES 模块版本：
 
 ```html
 
@@ -65,18 +65,16 @@ Or, use the ES module build:
 
 ### 生产环境 CDN 地址
 
-The short CDN URL is meant for prototyping. For production usage, use a fully resolved CDN URL to avoid resolving and
-redirect cost:
+简短的 CDN URL 用于原型制作。如果是生产用途，请使用完全解析的 CDN URL，避免解析和重定向：
 
-- Global build: `https://unpkg.com/pvue@0.4.1/dist/pvue.iife.js`
-    - exposes `Pvue` global, supports auto init
-- ESM build: `https://unpkg.com/pvue@0.4.1/dist/pvue.es.js`
-    - Must be used with `<script type="module">`
+- 全局构建：`https://unpkg.com/pvue@0.4.1/dist/pvue.iife.js`
+    - 导出 `Pvue` 为全局变量，支持自动初始化。
+- ESM 构建：`https://unpkg.com/pvue@0.4.1/dist/pvue.es.js`
+    - 必须与 `<script type="module">` 一起使用
 
 ### 根域
 
-The `createApp` function accepts a data object that serves as the root scope for all expressions. This can be used to
-bootstrap simple, one-off apps:
+`createApp` 函数接受作为所有表达式的根作用域的数据对象，这可以用来引导简单的一次性应用程序：
 
 ```html
 
@@ -105,17 +103,17 @@ bootstrap simple, one-off apps:
 </div>
 ```
 
-Note `v-scope` doesn't need to have a value here and simply serves as a hint for `pvue` to process the element.
+注：`v-scope` 不需要取值，只是作为 `pvue` 处理元素的提示。
 
 ### 显式装载目标
 
-You can specify a mount target (selector or element) to limit `pvue` to only that region of the page:
+您可以指定挂载目标 (选择器或元素)，将 `pvue` 限制为页面的该区域：
 
 ```js
 createApp().mount('#only-this-div')
 ```
 
-This also means you can have multiple `pvue` apps to control different regions on the same page:
+这也意味着您可以在同一页面上有多个`pvue`应用来控制不同的地域：
 
 ```js
 createApp({
@@ -129,8 +127,7 @@ createApp({
 
 ### 生命周期事件
 
-You can listen to the special `vue:mounted` and `vue:unmounted` lifecycle events for each element (the `vue:` prefix is
-required since v0.4.0):
+您可以监听每个元素特殊的 `vue:mounted` 和 `vue:unounted` 生命周期事件 (v0.4.0 开始需要 `vue：` 前缀)：
 
 ```html
 
@@ -153,19 +150,19 @@ Use `v-effect` to execute **reactive** inline statements:
 </div>
 ```
 
-The effect uses `count` which is a reactive data source, so it will re-run whenever `count` changes.
+effect 使用的是`Count`，这是一个反应性的数据源，所以每当`Count`发生变化时，它都会重新运行。
 
-Another example of replacing the `todo-focus` directive found in the original Vue TodoMVC example:
+替换原始 Vue TodoMVC 示例中的`todo-focus` 指令的另一个示例：
 
 ```html
 <input v-effect="if (todo === editedTodo) $el.focus()" />
 ```
 
-### Components
+### 组件
 
-The concept of "Components" are different in `pvue`, as it is much more bare-bones.
+在 `pvue` 中，“组件”的概念是不同的，因为它更基本。
 
-First, reusable scope logic can be created with functions:
+首先，可以使用函数创建可重用的作用域逻辑：
 
 ```html
 
@@ -202,8 +199,7 @@ First, reusable scope logic can be created with functions:
 
 ### 带模板的组件
 
-If you also want to reuse a piece of template, you can provide a special `$template` key on a scope object. The value
-can be the template string, or an ID selector to a `<template>` element:
+如果您还想重用一个模板，可以在 Scope 对象上提供一个特殊的 `$template` 键。该值可以是模板字符串，也可以是`<template>`元素的 ID 选择符：
 
 ```html
 
@@ -235,12 +231,11 @@ can be the template string, or an ID selector to a `<template>` element:
 <div v-scope="Counter({ initialCount: 2 })"></div>
 ```
 
-The `<template>` approach is recommended over inline strings because it is more efficient to clone from a native
-template element.
+与内联字符串相比，推荐使用 `<template>` 方法，因为从原生模板元素克隆会更高效。
 
 ### 全局状态管理
 
-You can use the `reactive` method (re-exported from `@vue/reactivity`) to create global state singletons:
+您可以使用`reactive`方法 (从`@vue/reactivity`重新导出) 创建全局单一状态：
 
 ```html
 
@@ -274,7 +269,7 @@ You can use the `reactive` method (re-exported from `@vue/reactivity`) to create
 
 ### 自定义指令
 
-Custom directives are also supported but with a different interface:
+支持自定义指令，但具有不同的接口：
 
 ```js
 const myDirective = (ctx) => {
@@ -307,7 +302,7 @@ const myDirective = (ctx) => {
 createApp().directive('my-dir', myDirective).mount()
 ```
 
-This is how `v-html` is implemented:
+`v-html` 的实现方式如下：
 
 ```js
 const html = ({ el, get, effect }) => {
@@ -317,10 +312,9 @@ const html = ({ el, get, effect }) => {
 }
 ```
 
-### 自定义分隔符(0.3+)
+### 自定义分隔符 (0.3+)
 
-You can use custom delimiters by passing `$delimiters` to your root scope. This is useful when working alongside a
-server-side templating language that also uses mustaches:
+您可以通过向根作用域传递 `$delimiters` 来使用自定义分隔符。这在与同时使用 mustaches 的服务器端模板语言一起工作时非常有用：
 
 ```js
 createApp({
@@ -330,7 +324,7 @@ createApp({
 
 ### 使用插件
 
-You can write custome directive then distrbute it as a pacage, then add it to create vue, like:
+您可以编写自定义指令，然后将其作为包分发，然后将它添加到创建 vue 中，如：
 
 ```html
 
@@ -361,11 +355,11 @@ export default {
 
 ## 示例
 
-Check out the [examples directory](https://github.com/vuejs/pvue/tree/main/examples).
+查看[示例目录](./examples).
 
 ## 特性
 
-### `pvue` only
+### 仅 `pvue`
 
 - `v-scope`
 - `v-effect`
@@ -373,17 +367,17 @@ Check out the [examples directory](https://github.com/vuejs/pvue/tree/main/examp
 
 ### 不同的行为
 
-- In expressions, `$el` points to the current element the directive is bound to (instead of component root element)
-- `createApp()` accepts global state instead of a component
-- Components are simplified into object-returning functions
-- Custom directives have a different interface
+- 在表达式中，`$el`指向指令绑定到的当前元素（而不是组件根元素）
+- `createApp()`接受全局状态而不是组件
+- 组件被简化为对象返回函数
+- 自定义指令具有不同的接口
 
 ### Vue 兼容
 
-- `{{ }}` text bindings (configurable with custom delimiters)
-- `v-bind` (including `:` shorthand and class/style special handling)
-- `v-on` (including `@` shorthand and all modifiers)
-- `v-model` (all input types + non-string `:value` bindings)
+- `{{ }}` 文本绑定（可配置自定义定界符）
+- `v-bind`（包括`:`速记和类/样式特殊处理）
+- `v-on`（包括`@`速记和所有修饰语）
+- `v-model`（所有输入类型 + 非字符串` :value` 绑定）
 - `v-if` / `v-else` / `v-else-if`
 - `v-for`
 - `v-show`
@@ -398,71 +392,64 @@ Check out the [examples directory](https://github.com/vuejs/pvue/tree/main/examp
 
 ### 不支持特性
 
-Some features are dropped because they have a relatively low utility/size ratio in the context of progressive
-enhancement. If you need these features, you should probably just use standard Vue.
+一些特征被丢弃，因为它们在渐进增强的上下文中具有相对低的效用/大小比。如果您需要这些功能，您可能只需要使用标准的 Vue。
 
-- `ref()`, `computed()` etc.
-- Render functions (`pvue` has no virtual DOM)
-- Reactivity for Collection Types (Map, Set, etc., removed for smaller size)
-- Transition, KeepAlive, Teleport, Suspense
-- `v-for` deep destructure
+- `ref()`, `computed()` 等。
+- Render 函数 (`pvue` 没有虚拟 dom)
+- 收集类型的反应性（Map、Set 等，因尺寸较小而删除）
+- 过渡、保活、传送、悬念
+- `v-for` 深度解构
 - `v-on="object"`
 - `v-is` & `<component :is="xxx">`
-- `v-bind:style` auto-prefixing
+- `v-bind:style` 自动前缀
 
-## 与标准Vue的差别
+## 与标准 Vue 的差别
 
-The point of `pvue` is not just about being small. It's about using the optimal implementation for the intended use
-case (progressive enhancement).
+“pvue”的意义不仅仅在于小。它是关于使用预期用例的最佳实现（渐进增强）。
 
-Standard Vue can be used with or without a build step. When using a build setup (e.g. with Single-File Components), we
-pre-compile all the templates so there's no template processing to be done at runtime. And thanks to tree-shaking, we
-can ship optional features in standard Vue that doesn't bloat your bundle size when not used. This is the optimal usage
-of standard Vue, but since it involves a build setup, it is better suited when building SPAs or apps with relatively
-heavy interactions.
+标准 Vue 可以在有或没有构建步骤的情况下使用。当使用构建设置时（例如使用单文件组件），我们预编译所有模板，因此在运行时不需要进行模板处理。
+多亏了 tree-shaking，我们可以在标准 Vue 中提供可选功能，在不使用时不会使您的捆绑包膨胀。
+这是标准 Vue 的最佳使用，但由于它涉及构建设置，因此更适合于构建交互相对频繁的 SPA 或应用程序。
 
-When using standard Vue without a build step and mounting to in-DOM templates, it is much less optimal because:
+当使用标准 Vue 而不需要构建步骤并安装到 DOM 模板中时，它的最佳性要低得多，因为：
 
-- We have to ship the Vue template compiler to the browser (13kb extra size)
-- The compiler will have to retrieve the template string from already instantiated DOM
-- The compiler then compiles the string into a JavaScript render function
-- Vue then replaces existing DOM templates with new DOM generated from the render function.
+- 我们必须将 Vue 模板编译器发送到浏览器（额外大小为 13kb）
+- 编译器必须从已经实例化的 DOM 中检索模板字符串
+- 然后，编译器将字符串编译为 JavaScript 呈现函数
+- 然后，Vue 用渲染函数生成的新 DOM 替换现有 DOM 模板。
 
-`pvue` avoids all this overhead by walking the existing DOM and attaching fine-grained reactive effects to the elements
-directly. The DOM _is_ the template. This means `pvue` is much more efficient in progressive enhancement scenarios.
+`pvue` 通过遍历现有 DOM 并将细粒度的反应性效果直接附加到元素来避免所有这些开销。DOM 是模板。这意味着“pvue”在渐进增强场景中更有效。
 
-This is also how Vue 1 worked. The trade-off here is that this approach is coupled to the DOM and thus not suitable for
-platform agnostic rendering or JavaScript SSR. We also lose the ability to work with render functions for advanced
-abstractions. However as you can probably tell, these capabilities are rarely needed in the context of progressive
-enhancement.
+这也是 Vue 1 的工作方式。这里的权衡是，这种方法与 DOM 耦合，因此不适用于平台无关的渲染或 JavaScript SSR。
+我们还失去了处理高级抽象的呈现函数的能力。然而，正如您可能知道的那样，在渐进增强的环境中很少需要这些功能。
 
-## 与Alpine的差别
+## 与 Alpine 的差别
 
 `pvue` is indeed addressing a similar scope to [Alpine](https://alpinejs.dev), but aims to be (1) even more minimal
 and (2) more Vue-compatible.
 
-- `pvue` is around half the size of Alpine.
+`pvue` 确实解决了与 [Alpine](https://alpinejs.dev) 类似的范围，但其目的是（1）更加最小化和（2）更加兼容 Vue。
 
-- `pvue` has no transition system (maybe this can be an opt-in plugin).
+- `pvue` 大约是 Alpine 的一半。
 
-- Although Alpine largely resembles Vue's design, there are various cases where the behavior is different from Vue
-  itself. It may also diverge more from Vue in the future. This is good because Alpine shouldn't have to restrict its
-  design to strictly follow Vue - it should have the freedom to develop in a direction that makes sense for its goals.
+- `pvue` 没有 transition 系统（也许这可以是一个选择加入插件）。
 
-  In comparison, `pvue` will try to align with standard Vue behavior whenever possible so that there is less friction
-  moving to standard Vue if needed. It's intended to be **part of the Vue ecosystem** to cover the progressive
-  enhancement use case where standard Vue is less optimized for nowadays.
+- 虽然 Alpine 在很大程度上类似于 Vue 的设计，但在许多情况下，其行为与 Vue 本身不同。在未来，它也可能与 Vue 的差异更大。
+  这是好的，因为 Alpine 不应该限制其设计严格遵循 Vue，它应该有自由在一个对其目标有意义的方向上发展。
 
-## 安全和CSP
+相比之下，`pvue`将尽可能与标准 Vue 行为保持一致，以便在需要时减少移动到标准 Vue 的摩擦。
+它旨在**成为 Vue 生态系统**的一部分**以涵盖标准 Vue 目前优化程度较低的渐进增强用例。
 
-`pvue` evaluates JavaScript expressions in the templates. This means **if** `pvue` is mounted on a region of the DOM
-that contains non-sanitized HTML from user data, it may lead to XSS attacks. **If your page renders user-submitted HTML,
-you should prefer initializing `pvue` using [explicit mount target](#explicit-mount-target) so that it only processes
-parts that are controlled by you**. You can also sanitize any user-submitted HTML for the `v-scope` attribute.
+## 安全和 CSP
 
-`pvue` evaluates the expressions using `new Function()`, which may be prohibited in strict CSP settings. There is no
-plan to provide a CSP build because it involves shipping an expression parser which defeats the purpose of being
-lightweight. If you have strict CSP requirements, you should probably use standard Vue and pre-compile the templates.
+
+`pvue`计算模板中的 JavaScript 表达式。这意味着**如果**`pvue`安装在 DOM 中包含来自用户数据的未经清理的 HTML 的区域上，
+则可能会导致 XSS 攻击，**如果您的页面呈现用户提交的 HTML，您应该更喜欢使用 显式装载目标初始化 `pvue`，
+以便它只处理由您控制的部分**。您还可以为`v-scope`属性清理任何用户提交的 HTML。
+
+
+`pvue` 使用 `new Function（）`计算表达式，这在严格的 CSP 设置中可能是禁止的。
+没有计划提供一个 CSP 构建，因为它涉及到一个表达式解析器，这违背了轻量级的目的。如果您有严格的 CSP 要求，您可能应该使用标准 Vue 并预编译模板。
 
 ## 版权
 
