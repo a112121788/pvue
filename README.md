@@ -8,20 +8,8 @@
 - 基于 DOM, 原地变换
 - 由 `@vue/reactivity` 驱动
 
-## 状态
 
-- This is pretty new. There are probably bugs and there might still be API changes, so **use at your own risk.** Is it
-  usable though? Very much. Check out the [examples](https://github.com/vuejs/pvue/tree/main/examples) to see what it's
-  capable of.
-- 这是非常新的。可能会有错误，也可能会有 API 更改，所以 **使用风险自负**。有用吗？查看 [示例](./examples)，看看它能做什么。
-  有能力。
-
-- 问题列表被故意禁用，因为我现在有更优先的事情要关注，不想分心。如果你发现了一个错误，你必须要么解决它，要么提交 PR 来自己修复它。 
-也就是说，请随意使用讨论选项卡来帮助彼此。
-
-- 功能请求目前不太可能被接受--这个项目的范围被故意保持在最低限度。
-
-## 用法
+## 快速上手
 
 `pvue` 无需构建可使用，只需从 CDN 加载即可：
 
@@ -51,6 +39,7 @@
   Pvue.createApp().mount()
 </script>
 ```
+
 
 或者，使用 ES 模块版本：
 
