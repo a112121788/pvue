@@ -57,9 +57,9 @@ Or, use the ES module build:
 
 The short CDN URL is meant for prototyping. For production usage, use a fully resolved CDN URL to avoid resolving and redirect cost:
 
-- Global build: `https://unpkg.com/pvue@0.2.2/dist/pvue.iife.js`
+- Global build: `https://unpkg.com/pvue@0.4.1/dist/pvue.iife.js`
   - exposes `Pvue` global, supports auto init
-- ESM build: `https://unpkg.com/pvue@0.2.2/dist/pvue.es.js`
+- ESM build: `https://unpkg.com/pvue@0.4.1/dist/pvue.es.js`
   - Must be used with `<script type="module">`
 
 ### Root Scope
