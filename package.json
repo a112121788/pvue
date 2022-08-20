@@ -1,18 +1,18 @@
 {
-  "name": "petite-vue",
+  "name": "pvue",
   "version": "0.4.1",
   "description": "5kb subset of Vue optimized for progressive enhancement",
   "files": [
     "dist"
   ],
-  "main": "dist/petite-vue.umd.js",
-  "unpkg": "dist/petite-vue.iife.js",
-  "jsdelivr": "dist/petite-vue.iife.js",
-  "module": "./dist/petite-vue.es.js",
+  "main": "dist/pvue.umd.js",
+  "unpkg": "dist/pvue.iife.js",
+  "jsdelivr": "dist/pvue.iife.js",
+  "module": "./dist/pvue.es.js",
   "exports": {
     ".": {
-      "import": "./dist/petite-vue.es.js",
-      "require": "./dist/petite-vue.umd.js"
+      "import": "./dist/pvue.es.js",
+      "require": "./dist/pvue.umd.js"
     }
   },
   "types": "./dist/types/index.d.ts",
@@ -24,7 +24,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/vuejs/petite-vue.git"
+    "url": "git+https://github.com/vuejs/pvue.git"
   },
   "keywords": [
     "vue"
@@ -32,9 +32,9 @@
   "author": "Evan You",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/vuejs/petite-vue/discussions"
+    "url": "https://github.com/vuejs/pvue/discussions"
   },
-  "homepage": "https://github.com/vuejs/petite-vue#readme",
+  "homepage": "https://github.com/vuejs/pvue#readme",
   "devDependencies": {
     "@vue/reactivity": "^3.2.27",
     "@vue/shared": "^3.2.27",
