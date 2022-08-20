@@ -1,7 +1,7 @@
 <script type="module">
-  import { createApp } from '../src'
+  import { createApp } from "../src";
 
-  createApp().mount('#app')
+  createApp().mount("#app");
 </script>
 
 <div
@@ -26,6 +26,10 @@
   {{ text }}
   <textarea v-model.trim="text"></textarea>
 
+  <h2>Text Input w/ lazy</h2>
+  {{ text }}
+  <input v-model.lazy="text" />
+  
   <h2>Checkbox</h2>
   <input type="checkbox" id="checkbox" v-model="checked" />
   <label for="checkbox">{{ checked }}</label>
@@ -34,7 +38,7 @@
   <label><input type="checkbox" v-model="arr" value="one" /> one</label>
   <label><input type="checkbox" v-model="arr" value="two" /> two</label>
   <label
-    ><input type="checkbox" v-model="arr" :value="123" /> actual number</label
+  ><input type="checkbox" v-model="arr" :value="123" /> actual number</label
   >
   <div>{{ arr }}</div>
 
@@ -51,7 +55,7 @@
   <label><input type="radio" v-model="radioSelected" value="one" /> one</label>
   <label><input type="radio" v-model="radioSelected" value="two" /> two</label>
   <label
-    ><input type="radio" v-model="radioSelected" value="three" /> three</label
+  ><input type="radio" v-model="radioSelected" value="three" /> three</label
   >
   <div>{{ radioSelected }}</div>
 
