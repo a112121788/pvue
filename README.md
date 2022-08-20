@@ -1,17 +1,14 @@
-# pvue
+# Pvue
 
-`pvue` is an alternative distribution of [Vue](https://vuejs.org) optimized
-for [progressive enhancement](https://developer.mozilla.org/en-US/docs/Glossary/Progressive_Enhancement). It provides
-the same template syntax and reactivity mental model as standard Vue. However, it is specifically optimized for "
-sprinkling" a small amount of interactions on an existing HTML page rendered by a server framework. See more details
-on [how it differs from standard Vue](#comparison-with-standard-vue).
+`pvue` 是 [vue](https://vuejs.org) 的优化的替代发行版。 它提供了与标准Vue相同的模板语法和响应式模型，
+不过它是专门为在现有的由服务器框架呈现的HTML页面上进行少量的交互准备的轻量级JS库。
 
-- Only ~6kb
+- Only ~8kb
 - Vue-compatible template syntax
 - DOM-based, mutates in place
 - Driven by `@vue/reactivity`
 
-## Status
+## 状态
 
 - This is pretty new. There are probably bugs and there might still be API changes, so **use at your own risk.** Is it
   usable though? Very much. Check out the [examples](https://github.com/vuejs/pvue/tree/main/examples) to see what it's
@@ -24,7 +21,7 @@ on [how it differs from standard Vue](#comparison-with-standard-vue).
 - Feature requests are unlikely to be accepted at this time - the scope of this project is intentionally kept to a bare
   minimum.
 
-## Usage
+## 用法
 
 `pvue` can be used without a build step. Simply load it from a CDN:
 
@@ -43,7 +40,7 @@ on [how it differs from standard Vue](#comparison-with-standard-vue).
 - The `defer` attribute makes the script execute after HTML content is parsed.
 - The `init` attribute tells `pvue` to automatically query and initialize all elements that have `v-scope` on the page.
 
-### Manual Init
+### 手动 Init
 
 If you don't want the auto init, remove the `init` attribute and move the scripts to end of `<body>`:
 
@@ -66,7 +63,7 @@ Or, use the ES module build:
 </script>
 ```
 
-### Production CDN URLs
+### 生产环境 CDN 地址
 
 The short CDN URL is meant for prototyping. For production usage, use a fully resolved CDN URL to avoid resolving and
 redirect cost:
@@ -76,7 +73,7 @@ redirect cost:
 - ESM build: `https://unpkg.com/pvue@0.4.1/dist/pvue.es.js`
     - Must be used with `<script type="module">`
 
-### Root Scope
+### 根域
 
 The `createApp` function accepts a data object that serves as the root scope for all expressions. This can be used to
 bootstrap simple, one-off apps:
@@ -110,7 +107,7 @@ bootstrap simple, one-off apps:
 
 Note `v-scope` doesn't need to have a value here and simply serves as a hint for `pvue` to process the element.
 
-### Explicit Mount Target
+### 显式装载目标
 
 You can specify a mount target (selector or element) to limit `pvue` to only that region of the page:
 
@@ -130,7 +127,7 @@ createApp({
 }).mount('#app2')
 ```
 
-### Lifecycle Events
+### 生命周期事件
 
 You can listen to the special `vue:mounted` and `vue:unmounted` lifecycle events for each element (the `vue:` prefix is
 required since v0.4.0):
@@ -203,7 +200,7 @@ First, reusable scope logic can be created with functions:
 </div>
 ```
 
-### Components with Template
+### 带模板的组件
 
 If you also want to reuse a piece of template, you can provide a special `$template` key on a scope object. The value
 can be the template string, or an ID selector to a `<template>` element:
@@ -241,7 +238,7 @@ can be the template string, or an ID selector to a `<template>` element:
 The `<template>` approach is recommended over inline strings because it is more efficient to clone from a native
 template element.
 
-### Global State Management
+### 全局状态管理
 
 You can use the `reactive` method (re-exported from `@vue/reactivity`) to create global state singletons:
 
@@ -275,7 +272,7 @@ You can use the `reactive` method (re-exported from `@vue/reactivity`) to create
 </div>
 ```
 
-### Custom Directives
+### 自定义指令
 
 Custom directives are also supported but with a different interface:
 
@@ -320,7 +317,7 @@ const html = ({ el, get, effect }) => {
 }
 ```
 
-### Custom Delimiters (0.3+)
+### 自定义分隔符(0.3+)
 
 You can use custom delimiters by passing `$delimiters` to your root scope. This is useful when working alongside a
 server-side templating language that also uses mustaches:
@@ -331,7 +328,7 @@ createApp({
 }).mount()
 ```
 
-### Use Plugins
+### 使用插件
 
 You can write custome directive then distrbute it as a pacage, then add it to create vue, like:
 
@@ -362,11 +359,11 @@ export default {
 }
 ```
 
-## Examples
+## 示例
 
 Check out the [examples directory](https://github.com/vuejs/pvue/tree/main/examples).
 
-## Features
+## 特性
 
 ### `pvue` only
 
@@ -374,14 +371,14 @@ Check out the [examples directory](https://github.com/vuejs/pvue/tree/main/examp
 - `v-effect`
 - `@vue:mounted` & `@vue:unmounted` events
 
-### Has Different Behavior
+### 不同的行为
 
 - In expressions, `$el` points to the current element the directive is bound to (instead of component root element)
 - `createApp()` accepts global state instead of a component
 - Components are simplified into object-returning functions
 - Custom directives have a different interface
 
-### Vue Compatible
+### Vue 兼容
 
 - `{{ }}` text bindings (configurable with custom delimiters)
 - `v-bind` (including `:` shorthand and class/style special handling)
@@ -399,7 +396,7 @@ Check out the [examples directory](https://github.com/vuejs/pvue/tree/main/examp
 - `nextTick()`
 - Template refs
 
-### Not Supported
+### 不支持特性
 
 Some features are dropped because they have a relatively low utility/size ratio in the context of progressive
 enhancement. If you need these features, you should probably just use standard Vue.
@@ -413,7 +410,7 @@ enhancement. If you need these features, you should probably just use standard V
 - `v-is` & `<component :is="xxx">`
 - `v-bind:style` auto-prefixing
 
-## Comparison with standard Vue
+## 与标准Vue的差别
 
 The point of `pvue` is not just about being small. It's about using the optimal implementation for the intended use
 case (progressive enhancement).
@@ -439,7 +436,7 @@ platform agnostic rendering or JavaScript SSR. We also lose the ability to work 
 abstractions. However as you can probably tell, these capabilities are rarely needed in the context of progressive
 enhancement.
 
-## Comparison with Alpine
+## 与Alpine的差别
 
 `pvue` is indeed addressing a similar scope to [Alpine](https://alpinejs.dev), but aims to be (1) even more minimal
 and (2) more Vue-compatible.
@@ -456,7 +453,7 @@ and (2) more Vue-compatible.
   moving to standard Vue if needed. It's intended to be **part of the Vue ecosystem** to cover the progressive
   enhancement use case where standard Vue is less optimized for nowadays.
 
-## Security and CSP
+## 安全和CSP
 
 `pvue` evaluates JavaScript expressions in the templates. This means **if** `pvue` is mounted on a region of the DOM
 that contains non-sanitized HTML from user data, it may lead to XSS attacks. **If your page renders user-submitted HTML,
@@ -467,6 +464,6 @@ parts that are controlled by you**. You can also sanitize any user-submitted HTM
 plan to provide a CSP build because it involves shipping an expression parser which defeats the purpose of being
 lightweight. If you have strict CSP requirements, you should probably use standard Vue and pre-compile the templates.
 
-## License
+## 版权
 
 MIT
