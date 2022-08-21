@@ -179,7 +179,6 @@ v-data指令中定义的属性可用于所有子元素。甚至在其他嵌套v-
 
 v-bind允许您根据 JavaScript 表达式的结果为元素设置 HTML 属性。
 
-
 ```html
 
 <style>
@@ -209,6 +208,7 @@ v-bind允许您根据 JavaScript 表达式的结果为元素设置 HTML 属性�
 ### v-effect
 
 ```html
+
 <div v-data="{ count: 0 }">
   <div v-effect="$el.textContent = count"></div>
   <button @click="count++">++</button>
@@ -218,6 +218,7 @@ v-bind允许您根据 JavaScript 表达式的结果为元素设置 HTML 属性�
 ### v-for
 
 ```html
+
 <script type="module">
   import { createApp } from '../src'
 
@@ -261,8 +262,10 @@ v-bind允许您根据 JavaScript 表达式的结果为元素设置 HTML 属性�
 ### v-html
 
 ```html
+
 <script type="module">
   import { createApp } from '../src'
+
   createApp().mount()
 </script>
 
@@ -272,7 +275,9 @@ v-bind允许您根据 JavaScript 表达式的结果为元素设置 HTML 属性�
 ```
 
 ### v-if
+
 ```html
+
 <script type="module">
   import { createApp } from '../src'
 
@@ -290,7 +295,9 @@ v-bind允许您根据 JavaScript 表达式的结果为元素设置 HTML 属性�
 ```
 
 ### v-model
+
 ```html
+
 <script type="module">
   import { createApp } from "../src";
 
@@ -322,7 +329,7 @@ v-bind允许您根据 JavaScript 表达式的结果为元素设置 HTML 属性�
   <h2>Text Input w/ lazy</h2>
   {{ text }}
   <input v-model.lazy="text" />
-  
+
   <h2>Checkbox</h2>
   <input type="checkbox" id="checkbox" v-model="checked" />
   <label for="checkbox">{{ checked }}</label>
@@ -363,7 +370,9 @@ v-bind允许您根据 JavaScript 表达式的结果为元素设置 HTML 属性�
 ```
 
 ### v-on
+
 ```html
+
 <script type="module">
   import { createApp } from '../src'
 
@@ -385,11 +394,14 @@ v-bind允许您根据 JavaScript 表达式的结果为元素设置 HTML 属性�
 </div>
 
 ```
+
 ### v-once
 
 ```html
+
 <script type="module">
   import { createApp } from '../src'
+
   createApp().mount()
 </script>
 
@@ -407,9 +419,12 @@ v-bind允许您根据 JavaScript 表达式的结果为元素设置 HTML 属性�
 ```
 
 ### v-pre
+
 ```html
+
 <script type="module">
   import { createApp } from '../src'
+
   createApp().mount()
 </script>
 
@@ -421,9 +436,12 @@ v-bind允许您根据 JavaScript 表达式的结果为元素设置 HTML 属性�
 ```
 
 ### v-ref
+
 ```html
+
 <script type="module">
   import { createApp, reactive } from '../src'
+
   createApp().mount()
 </script>
 
@@ -456,7 +474,9 @@ v-bind允许您根据 JavaScript 表达式的结果为元素设置 HTML 属性�
 ```
 
 ### v-show
+
 ```html
+
 <script type="module">
   import { createApp } from '../src'
 
@@ -470,9 +490,12 @@ v-bind允许您根据 JavaScript 表达式的结果为元素设置 HTML 属性�
 ```
 
 ### v-text
+
 ```html
+
 <script type="module">
   import { createApp } from '../src'
+
   createApp().mount()
 </script>
 
@@ -483,9 +506,12 @@ v-bind允许您根据 JavaScript 表达式的结果为元素设置 HTML 属性�
 ```
 
 ### v-cloak
+
 ```html
+
 <script type="module">
   import { createApp } from '../src'
+
   createApp({
     msg: 'content',
     hide: false
@@ -504,6 +530,40 @@ v-bind允许您根据 JavaScript 表达式的结果为元素设置 HTML 属性�
 </style>
 ```
 
-## 魔法
-
 ## 全局函数
+
+### Pvue.createApp
+
+```html
+
+```
+
+### Pvue.nextTick
+
+```html
+
+```
+
+### Pvue.reactive
+
+即：@vue/reactivity
+
+```html
+
+```
+
+### Pvue.version
+
+```html
+
+```
+
+## Pvue.createApp() 对象方法
+
+### mount
+
+### directive
+
+### use
+
+### unmount
