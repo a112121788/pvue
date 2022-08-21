@@ -8,19 +8,26 @@
 - 基于 DOM, 原地变换
 - 由 `@vue/reactivity` 驱动
 
-
 ## 快速上手
 
 `pvue` 无需构建可使用，只需从 CDN 加载即可：
 
 ```html
+
 <script src="https://cdn.jsdelivr.net/gh/a112121788/pvue/dist/pvue.iife.js" defer init></script>
 
-<!-- anywhere on the page -->
 <div v-scope="{ count: 0 }">
   {{ count }}
   <button @click="count++">inc</button>
 </div>
+
+<div v-scope="{ open: false }">
+  <button @click="open=!open">Toggle</button>
+  <span v-show="open">
+      Content...
+    </span>
+</div>
+
 ```
 
 - 使用 `v-scope` 在页面上标记应该由 `pvue` 控制的区域。
@@ -39,26 +46,10 @@
 </script>
 ```
 
-
-或者，使用 ES 模块版本：
-
-```html
-
-<script type="module">
-  import { createApp } from 'https://cdn.jsdelivr.net/gh/a112121788/pvue/dist/pvue.es.js'
-
-  createApp().mount()
-</script>
-```
-
 ### 生产环境 CDN 地址
 
-简短的 CDN URL 用于原型制作。如果是生产用途，请使用完全解析的 CDN URL，避免解析和重定向：
-
-- 全局构建：`https://cdn.jsdelivr.net/gh/a112121788/pvue@0.5.0/dist/pvue.iife.js`
-    - 导出 `Pvue` 为全局变量，支持自动初始化。
-- ESM 构建：`https://cdn.jsdelivr.net/gh/a112121788/pvue@0.5.0/dist/pvue.es.js`
-    - 必须与 `<script type="module">` 一起使用
+- 最新版： `https://cdn.jsdelivr.net/gh/a112121788/pvue/dist/pvue.iife.js`
+- 具体某个版本：`https://cdn.jsdelivr.net/gh/a112121788/pvue@0.5.0/dist/pvue.iife.js`
 
 ### 根域
 
@@ -66,10 +57,10 @@
 
 ```html
 
-<script type="module">
-  import { createApp } from 'https://cdn.jsdelivr.net/gh/a112121788/pvue@0.5.0/dist/pvue.es.js'
+<script src="https://cdn.jsdelivr.net/gh/a112121788/pvue/dist/pvue.iife.js"></script>
 
-  createApp({
+<script>
+  Pvue.createApp({
     // exposed to all expressions
     count: 0,
     // getters
@@ -104,7 +95,7 @@ createApp().mount('#only-this-div')
 这也意味着您可以在同一页面上有多个`pvue`应用来控制不同的地域：
 
 ```js
-createApp({
+Pvue.createApp({
   // root scope for app one
 }).mount('#app1')
 
@@ -154,9 +145,8 @@ effect 使用的是`Count`，这是一个反应性的数据源，所以每当`Co
 
 ```html
 
+<script src="https://cdn.jsdelivr.net/gh/a112121788/pvue/dist/pvue.iife.js"></script>
 <script type="module">
-  import { createApp } from 'https://cdn.jsdelivr.net/gh/a112121788/pvue@0.5.0/dist/pvue.es.js'
-
   function Counter(props) {
     return {
       count: props.initialCount,
@@ -169,7 +159,7 @@ effect 使用的是`Count`，这是一个反应性的数据源，所以每当`Co
     }
   }
 
-  createApp({
+  Pvue.createApp({
     Counter
   }).mount()
 </script>
@@ -187,13 +177,13 @@ effect 使用的是`Count`，这是一个反应性的数据源，所以每当`Co
 
 ### 带模板的组件
 
-如果您还想重用一个模板，可以在 Scope 对象上提供一个特殊的 `$template` 键。该值可以是模板字符串，也可以是`<template>`元素的 ID 选择符：
+如果您还想重用一个模板，可以在 Scope 对象上提供一个特殊的 `$template` 键。该值可以是模板字符串，也可以是`<template>`元素的
+ID 选择符：
 
 ```html
 
+<script src="https://cdn.jsdelivr.net/gh/a112121788/pvue/dist/pvue.iife.js"></script>
 <script type="module">
-  import { createApp } from 'https://cdn.jsdelivr.net/gh/a112121788/pvue@0.5.0/dist/pvue.es.js'
-
   function Counter(props) {
     return {
       $template: '#counter-template',
@@ -204,7 +194,7 @@ effect 使用的是`Count`，这是一个反应性的数据源，所以每当`Co
     }
   }
 
-  createApp({
+  Pvue.createApp({
     Counter
   }).mount()
 </script>
@@ -227,9 +217,8 @@ effect 使用的是`Count`，这是一个反应性的数据源，所以每当`Co
 
 ```html
 
-<script type="module">
-  import { createApp, reactive } from 'https://cdn.jsdelivr.net/gh/a112121788/pvue@0.5.0/dist/pvue.es.js'
-
+<script src="https://cdn.jsdelivr.net/gh/a112121788/pvue/dist/pvue.iife.js"></script>
+<script>
   const store = reactive({
     count: 0,
     inc() {
@@ -240,7 +229,7 @@ effect 使用的是`Count`，这是一个反应性的数据源，所以每当`Co
   // manipulate it here
   store.inc()
 
-  createApp({
+  Pvue.createApp({
     // share it with app scopes
     store
   }).mount()
@@ -322,13 +311,13 @@ createApp({
 
 <script type="module">
   import log from './log'
-  import { createApp } from 'peteite-vue'
+  import { createApp } from 'https://cdn.jsdelivr.net/gh/a112121788/pvue/dist/pvue.es.js'
 
   createApp().use(log).mount()
 </script>
 ```
 
-A plugin code similar to vue plugins code:
+类似于 vue 插件代码的插件代码：
 
 ```js
 // inside log.js plugin file
@@ -430,14 +419,13 @@ and (2) more Vue-compatible.
 
 ## 安全和 CSP
 
-
 `pvue`计算模板中的 JavaScript 表达式。这意味着**如果**`pvue`安装在 DOM 中包含来自用户数据的未经清理的 HTML 的区域上，
 则可能会导致 XSS 攻击，**如果您的页面呈现用户提交的 HTML，您应该更喜欢使用 显式装载目标初始化 `pvue`，
 以便它只处理由您控制的部分**。您还可以为`v-scope`属性清理任何用户提交的 HTML。
 
-
 `pvue` 使用 `new Function（）`计算表达式，这在严格的 CSP 设置中可能是禁止的。
-没有计划提供一个 CSP 构建，因为它涉及到一个表达式解析器，这违背了轻量级的目的。如果您有严格的 CSP 要求，您可能应该使用标准 Vue 并预编译模板。
+没有计划提供一个 CSP 构建，因为它涉及到一个表达式解析器，这违背了轻量级的目的。如果您有严格的 CSP 要求，您可能应该使用标准
+Vue 并预编译模板。
 
 ## 版权
 
