@@ -3,9 +3,9 @@ module.exports = {
     displayAllHeaders: true,
     sidebar: [
       "/",
-      ["/guides/start", "快速上手"],
       ["/guides/life-cycle", "生命周期事件"],
       ["/guides/api", "核心 API"],
+      ["/guides/component", "组件与状态"],
       ["/guides/other", "其他"]
     ]
   },

@@ -1,8 +1,6 @@
-# 核心 API
+# 核心指令
 
-## 指令
-
-### v-data
+##  v-data
 
 Pvue 中的一切都是从 v-data 指令开始的。
 
@@ -24,7 +22,7 @@ v-data 将一大块 HTML 定义为 Pvue 组件，并为该组件提供响应数�
 
 不要担心这个例子中的其他指令（@click 和 v-show），我们稍后会介绍。现在，让我们专注于 v-data。
 
-#### 范围
+###  范围
 
 v-data 指令中定义的属性可用于所有子元素。甚至在其他嵌套 v-data 组件中。
 
@@ -43,7 +41,7 @@ v-data 指令中定义的属性可用于所有子元素。甚至在其他嵌套 
 </div>
 ```
 
-#### 方法
+###  方法
 
 因为 v-data 被评估为普通的 JavaScript 对象，所以除了状态之外，您还可以存储方法甚至 getter。
 
@@ -75,7 +73,7 @@ v-data 指令中定义的属性可用于所有子元素。甚至在其他嵌套 
 <button @click="toggle">...</button>
 ```
 
-#### Gettes
+###  Gettes
 
 当方法的唯一目的是根据其他状态返回数据时，JavaScript getter 很方便。
 
@@ -102,7 +100,7 @@ v-data 指令中定义的属性可用于所有子元素。甚至在其他嵌套 
 
 在这种情况下，没有明显的好处。但在某些情况下，getter 有助于在组件中提供更具表现力的语法。
 
-#### 无数据组件
+###  无数据组件
 
 有时，您想创建一个 Pvue 组件，但您不需要任何数据。
 
@@ -120,7 +118,7 @@ v-data 指令中定义的属性可用于所有子元素。甚至在其他嵌套 
 <div x-data>
 ```
 
-#### 单元素组件
+###  单元素组件
 
 有时您的 Pvue 组件中可能只有一个元素，如下所示：
 
@@ -140,7 +138,7 @@ v-data 指令中定义的属性可用于所有子元素。甚至在其他嵌套 
 </button>
 ```
 
-#### 可重复使用的数据
+###  可重复使用的数据
 
 如果您发现自己复制 x-data 的内容，或者发现内联语法冗长，您可以
 
@@ -177,7 +175,7 @@ v-data 指令中定义的属性可用于所有子元素。甚至在其他嵌套 
 </div>
 ```
 
-### v-bind
+##  v-bind
 
 v-bind 允许您根据 JavaScript 表达式的结果为元素设置 HTML 属性。
 
@@ -207,7 +205,7 @@ v-bind 允许您根据 JavaScript 表达式的结果为元素设置 HTML 属性�
 
 ```
 
-### v-effect
+##  v-effect
 
 v-effect 是一个指令，用于执行 pvue 中的内联反应式语句。在下面的代码片段中，count 变量是反应式的，所以每当计数发生变化时，v-effect
 将重新运行，然后用 count 的当前值更新 div。
@@ -222,7 +220,7 @@ v-effect 是一个指令，用于执行 pvue 中的内联反应式语句。在�
 
 
 
-### v-for
+##  v-for
 
 ```html
 
@@ -265,7 +263,7 @@ v-effect 是一个指令，用于执行 pvue 中的内联反应式语句。在�
 
 ```
 
-### v-html
+##  v-html
 
 ```html
 
@@ -278,7 +276,7 @@ v-effect 是一个指令，用于执行 pvue 中的内联反应式语句。在�
 </script>
 ```
 
-### v-if
+##  v-if
 
 ```html
 
@@ -296,7 +294,7 @@ v-effect 是一个指令，用于执行 pvue 中的内联反应式语句。在�
 
 ```
 
-### v-model
+##  v-model
 
 ```html
 
@@ -371,7 +369,7 @@ v-effect 是一个指令，用于执行 pvue 中的内联反应式语句。在�
 </script>
 ```
 
-### v-on
+##  v-on
 
 ```html
 
@@ -397,7 +395,7 @@ v-effect 是一个指令，用于执行 pvue 中的内联反应式语句。在�
 
 ```
 
-### v-once
+##  v-once
 
 ```html
 
@@ -416,7 +414,7 @@ v-effect 是一个指令，用于执行 pvue 中的内联反应式语句。在�
 </script>
 ```
 
-### v-pre
+##  v-pre
 
 ```html
 
@@ -432,7 +430,7 @@ v-effect 是一个指令，用于执行 pvue 中的内联反应式语句。在�
 
 ```
 
-### v-ref
+##  v-ref
 
 ```html
 
@@ -466,7 +464,7 @@ v-effect 是一个指令，用于执行 pvue 中的内联反应式语句。在�
 
 ```
 
-### v-show
+##  v-show
 
 ```html
 
@@ -480,7 +478,7 @@ v-effect 是一个指令，用于执行 pvue 中的内联反应式语句。在�
 </script>
 ```
 
-### v-text
+##  v-text
 
 ```html
 
@@ -494,7 +492,7 @@ v-effect 是一个指令，用于执行 pvue 中的内联反应式语句。在�
 </div>
 ```
 
-### v-cloak
+##  v-cloak
 
 ```html
 
@@ -517,49 +515,3 @@ v-effect 是一个指令，用于执行 pvue 中的内联反应式语句。在�
   }).mount()
 </script>
 ```
-
-## 全局函数
-
-### Pvue.createApp
-
-createApp 函数接受一个对象参数，是所有表达式的根作用域。
-
-
-
-```html
-
-```
-
-### Pvue.nextTick
-
-```html
-
-```
-
-### Pvue.reactive
-
-即：@vue/reactivity
-
-```html
-
-```
-
-### Pvue.version
-
-```html
-
-```
-
-## Pvue.createApp() 对象方法
-
-### mount
-
-mount 方法最主要的作用就是处理 el 参数，找到应用挂载的根 DOM 节点，然后执行初始化流程。
-
-
-
-### directive
-
-### use
-
-### unmount
