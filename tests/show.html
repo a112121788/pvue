@@ -4,7 +4,7 @@
   createApp().mount('#app')
 </script>
 
-<div id="app" v-scope="{ open: true }">
+<div id="app" v-data="{ open: true }">
   <button @click="open = !open">toggle</button>
   <div v-show="open">ok</div>
 </div>

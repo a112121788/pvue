@@ -9,7 +9,7 @@ import { queueJob } from './scheduler'
 import { inOnce } from './walk'
 export interface Context {
   key?: any
-  scope: Record<string, any>
+  data: Record<string, any>
   dirs: Record<string, Directive>
   blocks: Block[]
   effect: typeof rawEffect
@@ -24,7 +24,7 @@ export const createContext = (parent?: Context): Context => {
     delimiters: ['{{', '}}'],
     delimitersRE: /\{\{([^]+?)\}\}/g,
     ...parent,
-    scope: parent ? parent.scope : reactive({}),
+    data: parent ? parent.data : reactive({}),
     dirs: parent ? parent.dirs : {},
     effects: [],
     blocks: [],
@@ -44,18 +44,18 @@ export const createContext = (parent?: Context): Context => {
   return ctx
 }
 
-export const createScopedContext = (ctx: Context, data = {}): Context => {
-  const parentScope = ctx.scope
-  const mergedScope = Object.create(parentScope)
-  Object.defineProperties(mergedScope, Object.getOwnPropertyDescriptors(data))
-  mergedScope.$refs = Object.create(parentScope.$refs)
+export const createdatadContext = (ctx: Context, data = {}): Context => {
+  const parentdata = ctx.data
+  const mergeddata = Object.create(parentdata)
+  Object.defineProperties(mergeddata, Object.getOwnPropertyDescriptors(data))
+  mergeddata.$refs = Object.create(parentdata.$refs)
   const reactiveProxy = reactive(
-    new Proxy(mergedScope, {
+    new Proxy(mergeddata, {
       set(target, key, val, receiver) {
-        // when setting a property that doesn't exist on current scope,
-        // do not create it on the current scope and fallback to parent scope.
+        // when setting a property that doesn't exist on current data,
+        // do not create it on the current data and fallback to parent data.
         if (receiver === reactiveProxy && !target.hasOwnProperty(key)) {
-          return Reflect.set(parentScope, key, val)
+          return Reflect.set(parentdata, key, val)
         }
         return Reflect.set(target, key, val, receiver)
       }
@@ -65,14 +65,14 @@ export const createScopedContext = (ctx: Context, data = {}): Context => {
   bindContextMethods(reactiveProxy)
   return {
     ...ctx,
-    scope: reactiveProxy
+    data: reactiveProxy
   }
 }
 
-export const bindContextMethods = (scope: Record<string, any>) => {
-  for (const key of Object.keys(scope)) {
-    if (typeof scope[key] === 'function') {
-      scope[key] = scope[key].bind(scope)
+export const bindContextMethods = (data: Record<string, any>) => {
+  for (const key of Object.keys(data)) {
+    if (typeof data[key] === 'function') {
+      data[key] = data[key].bind(data)
     }
   }
 }

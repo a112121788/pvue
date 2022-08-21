@@ -16,12 +16,12 @@
 
 <script src="https://cdn.jsdelivr.net/gh/a112121788/pvue/dist/pvue.iife.js" defer init></script>
 
-<div v-scope="{ count: 0 }">
+<div v-data="{ count: 0 }">
   {{ count }}
   <button @click="count++">inc</button>
 </div>
 
-<div v-scope="{ open: false }">
+<div v-data="{ open: false }">
   <button @click="open=!open">Toggle</button>
   <span v-show="open">
       Content...
@@ -30,9 +30,9 @@
 
 ```
 
-- 使用 `v-scope` 在页面上标记应该由 `pvue` 控制的区域。
+- 使用 `v-data` 在页面上标记应该由 `pvue` 控制的区域。
 - `defer` 属性使脚本在解析完 HTML 内容后执行。
-- `init` 属性告诉 `pvue` 自动查询并初始化页面上所有有 `v-scope` 的元素。
+- `init` 属性告诉 `pvue` 自动查询并初始化页面上所有有 `v-data` 的元素。
 
 ### 手动初始化
 
@@ -74,15 +74,15 @@
   }).mount()
 </script>
 
-<!-- v-scope value can be omitted -->
-<div v-scope>
+<!-- v-data value can be omitted -->
+<div v-data>
   <p>{{ count }}</p>
   <p>{{ plusOne }}</p>
   <button @click="increment">increment</button>
 </div>
 ```
 
-注：`v-scope` 不需要取值，只是作为 `pvue` 处理元素的提示。
+注：`v-data` 不需要取值，只是作为 `pvue` 处理元素的提示。
 
 ### 显式装载目标
 
@@ -96,11 +96,11 @@ createApp().mount('#only-this-div')
 
 ```js
 Pvue.createApp({
-  // root scope for app one
+  // root data for app one
 }).mount('#app1')
 
 createApp({
-  // root scope for app two
+  // root data for app two
 }).mount('#app2')
 ```
 
@@ -123,7 +123,7 @@ Use `v-effect` to execute **reactive** inline statements:
 
 ```html
 
-<div v-scope="{ count: 0 }">
+<div v-data="{ count: 0 }">
   <div v-effect="$el.textContent = count"></div>
   <button @click="count++">++</button>
 </div>
@@ -164,12 +164,12 @@ effect 使用的是`Count`，这是一个反应性的数据源，所以每当`Co
   }).mount()
 </script>
 
-<div v-scope="Counter({ initialCount: 1 })" @vue:mounted="mounted">
+<div v-data="Counter({ initialCount: 1 })" @vue:mounted="mounted">
   <p>{{ count }}</p>
   <button @click="inc">increment</button>
 </div>
 
-<div v-scope="Counter({ initialCount: 2 })">
+<div v-data="Counter({ initialCount: 2 })">
   <p>{{ count }}</p>
   <button @click="inc">increment</button>
 </div>
@@ -177,7 +177,7 @@ effect 使用的是`Count`，这是一个反应性的数据源，所以每当`Co
 
 ### 带模板的组件
 
-如果您还想重用一个模板，可以在 Scope 对象上提供一个特殊的 `$template` 键。该值可以是模板字符串，也可以是`<template>`元素的
+如果您还想重用一个模板，可以在 data 对象上提供一个特殊的 `$template` 键。该值可以是模板字符串，也可以是`<template>`元素的
 ID 选择符：
 
 ```html
@@ -205,8 +205,8 @@ ID 选择符：
 </template>
 
 <!-- reuse it -->
-<div v-scope="Counter({ initialCount: 1 })"></div>
-<div v-scope="Counter({ initialCount: 2 })"></div>
+<div v-data="Counter({ initialCount: 1 })"></div>
+<div v-data="Counter({ initialCount: 2 })"></div>
 ```
 
 与内联字符串相比，推荐使用 `<template>` 方法，因为从原生模板元素克隆会更高效。
@@ -230,12 +230,12 @@ ID 选择符：
   store.inc()
 
   Pvue.createApp({
-    // share it with app scopes
+    // share it with app datas
     store
   }).mount()
 </script>
 
-<div v-scope="{ localCount: 0 }">
+<div v-data="{ localCount: 0 }">
   <p>Global {{ store.count }}</p>
   <button @click="store.inc">increment</button>
 
@@ -261,7 +261,7 @@ const myDirective = (ctx) => {
   ctx.modifiers
   // evaluate the expression and get its value
   ctx.get()
-  // evaluate arbitrary expression in current scope
+  // evaluate arbitrary expression in current data
   ctx.get(`${ctx.exp} + 10`)
 
   // run reactive effect
@@ -305,7 +305,7 @@ createApp({
 
 ```html
 
-<div v-scope="{counter: 0}" v-log="inside petite-vue scope">
+<div v-data="{counter: 0}" v-log="inside petite-vue data">
   <button @click="counter++">increase</button>
 </div>
 
@@ -338,7 +338,7 @@ export default {
 
 ### 仅 `pvue`
 
-- `v-scope`
+- `v-data`
 - `v-effect`
 - `@vue:mounted` & `@vue:unmounted` events
 
@@ -402,7 +402,7 @@ export default {
 
 ## 与 Alpine 的差别
 
-`pvue` is indeed addressing a similar scope to [Alpine](https://alpinejs.dev), but aims to be (1) even more minimal
+`pvue` is indeed addressing a similar data to [Alpine](https://alpinejs.dev), but aims to be (1) even more minimal
 and (2) more Vue-compatible.
 
 `pvue` 确实解决了与 [Alpine](https://alpinejs.dev) 类似的范围，但其目的是（1）更加最小化和（2）更加兼容 Vue。
@@ -421,7 +421,7 @@ and (2) more Vue-compatible.
 
 `pvue`计算模板中的 JavaScript 表达式。这意味着**如果**`pvue`安装在 DOM 中包含来自用户数据的未经清理的 HTML 的区域上，
 则可能会导致 XSS 攻击，**如果您的页面呈现用户提交的 HTML，您应该更喜欢使用 显式装载目标初始化 `pvue`，
-以便它只处理由您控制的部分**。您还可以为`v-scope`属性清理任何用户提交的 HTML。
+以便它只处理由您控制的部分**。您还可以为`v-data`属性清理任何用户提交的 HTML。
 
 `pvue` 使用 `new Function（）`计算表达式，这在严格的 CSP 设置中可能是禁止的。
 没有计划提供一个 CSP 构建，因为它涉及到一个表达式解析器，这违背了轻量级的目的。如果您有严格的 CSP 要求，您可能应该使用标准

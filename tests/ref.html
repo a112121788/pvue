@@ -6,7 +6,7 @@
 <div
   id="root"
   ref="root"
-  v-scope="{ dynamicRef: 'x', show: true }"
+  v-data="{ dynamicRef: 'x', show: true }"
   v-effect="console.log({ x: $refs.x, y: $refs.y, input: $refs.input })"
 >
   <p>Accessing root el: id is {{ $refs.root.id }}</p>
@@ -19,12 +19,12 @@
   </button>
   <button @click="show = !show">toggle</button>
 
-  <div v-scope>
-    <p ref="x">nested scope ref</p>
+  <div v-data>
+    <p ref="x">nested data ref</p>
     <button
       @click="console.log({ x: $refs.x, y: $refs.y, input: $refs.input })"
     >
-      log nested scope refs
+      log nested data refs
     </button>
   </div>
 </div>

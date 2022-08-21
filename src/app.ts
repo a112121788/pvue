@@ -12,8 +12,8 @@ export const createApp = (initialData?: any) => {
   // root context
   const ctx = createContext();
   if (initialData) {
-    ctx.scope = reactive(initialData);
-    bindContextMethods(ctx.scope);
+    ctx.data = reactive(initialData);
+    bindContextMethods(ctx.data);
 
     // handle custom delimiters
     if (initialData.$delimiters) {
@@ -26,9 +26,9 @@ export const createApp = (initialData?: any) => {
   }
 
   // global internal helpers
-  ctx.scope.$s = toDisplayString;
-  ctx.scope.$nextTick = nextTick;
-  ctx.scope.$refs = Object.create(null);
+  ctx.data.$s = toDisplayString;
+  ctx.data.$nextTick = nextTick;
+  ctx.data.$refs = Object.create(null);
 
   let rootBlocks: Block[];
 
@@ -59,11 +59,11 @@ export const createApp = (initialData?: any) => {
 
       el = el || document.documentElement;
       let roots: Element[];
-      if (el.hasAttribute("v-scope")) {
+      if (el.hasAttribute("v-data")) {
         roots = [el];
       } else {
-        roots = [...el.querySelectorAll(`[v-scope]`)].filter(
-          (root) => !root.matches(`[v-scope] [v-scope]`)
+        roots = [...el.querySelectorAll(`[v-data]`)].filter(
+          (root) => !root.matches(`[v-data] [v-data]`)
         );
       }
       if (!roots.length) {
@@ -79,7 +79,7 @@ export const createApp = (initialData?: any) => {
           `Mounting on documentElement - this is non-optimal as pvue ` +
           `will be forced to crawl the entire page's DOM. ` +
           `Consider explicitly marking elements controlled by pvue ` +
-          `with \`v-scope\`.`
+          `with \`v-data\`.`
         );
       }
 

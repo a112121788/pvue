@@ -7,7 +7,7 @@ import { text } from "./directives/text";
 import { evaluate } from "./eval";
 import { checkAttr } from "./utils";
 import { ref } from "./directives/ref";
-import { Context, createScopedContext } from "./context";
+import { Context, createdatadContext } from "./context";
 
 const dirRE = /^(?:v-|:|@)/;
 const modifierRE = /\.([\w-]+)/g;
@@ -37,12 +37,12 @@ export const walk = (node: Node, ctx: Context): ChildNode | null | void => {
       return _for(el, exp, ctx);
     }
 
-    // v-scope
-    if ((exp = checkAttr(el, "v-scope")) || exp === "") {
-      const scope = exp ? evaluate(ctx.scope, exp, el) : {};
-      ctx = createScopedContext(ctx, scope);
-      if (scope.$template) {
-        resolveTemplate(el, scope.$template);
+    // v-data
+    if ((exp = checkAttr(el, "v-data")) || exp === "") {
+      const data = exp ? evaluate(ctx.data, exp, el) : {};
+      ctx = createdatadContext(ctx, data);
+      if (data.$template) {
+        resolveTemplate(el, data.$template);
       }
     }
 
@@ -157,7 +157,7 @@ const applyDirective = (
   arg?: string,
   modifiers?: Record<string, true>
 ) => {
-  const get = (e = exp) => evaluate(ctx.scope, e, el);
+  const get = (e = exp) => evaluate(ctx.data, e, el);
   const cleanup = dir({
     el,
     get,

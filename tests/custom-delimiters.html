@@ -5,7 +5,7 @@
   }).mount()
 </script>
 
-<div v-scope="{ count: 1 }">
+<div v-data="{ count: 1 }">
   <p v-if="count">count is ${ count }!</p>
   <button @click="count++">increase</button>
 

@@ -12,12 +12,12 @@
   store.inc()
 
   createApp({
-    // share it with app scopes
+    // share it with app datas
     store
   }).mount()
 </script>
 
-<div v-scope="{ localCount: 0 }">
+<div v-data="{ localCount: 0 }">
   <p>Global {{ store.count }}</p>
   <button @click="store.inc">increment</button>
 

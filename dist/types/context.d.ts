@@ -3,7 +3,7 @@ import { Block } from './block';
 import { Directive } from './directives';
 export interface Context {
     key?: any;
-    scope: Record<string, any>;
+    data: Record<string, any>;
     dirs: Record<string, Directive>;
     blocks: Block[];
     effect: typeof rawEffect;
@@ -13,5 +13,5 @@ export interface Context {
     delimitersRE: RegExp;
 }
 export declare const createContext: (parent?: Context | undefined) => Context;
-export declare const createScopedContext: (ctx: Context, data?: {}) => Context;
-export declare const bindContextMethods: (scope: Record<string, any>) => void;
+export declare const createdatadContext: (ctx: Context, data?: {}) => Context;
+export declare const bindContextMethods: (data: Record<string, any>) => void;

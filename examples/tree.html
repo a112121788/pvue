@@ -64,14 +64,14 @@
     <span v-if="isFolder">[{{open ? '-' : '+'}}]</span>
   </div>
   <ul v-show="open" v-if="isFolder">
-    <li v-for="model in model.children" v-scope="TreeItem(model)"></li>
+    <li v-for="model in model.children" v-data="TreeItem(model)"></li>
     <li class="add" @click="addChild">+</li>
   </ul>
 </template>
 
 <p>Double click an item to turn it into a folder.</p>
-<ul v-scope>
-  <li class="item" v-scope="TreeItem(treeData)"></li>
+<ul v-data>
+  <li class="item" v-data="TreeItem(treeData)"></li>
 </ul>
 
 <style>

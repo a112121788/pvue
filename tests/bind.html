@@ -1,38 +1,42 @@
 <style>
-  #green {
-    color: green;
-  }
-  .red {
-    color: red;
-  }
-  .orange {
-    color: orange;
-  }
-  .static {
-    font-weight: bold;
-  }
-  [v-cloak] {
-    opacity: 0;
-  }
+    #green {
+        color: green;
+    }
+
+    .red {
+        color: red;
+    }
+
+    .orange {
+        color: orange;
+    }
+
+    .static {
+        font-weight: bold;
+    }
+
+    [v-cloak] {
+        opacity: 0;
+    }
 </style>
 
 <script type="module">
-  import { createApp, reactive } from '../src'
+  import { createApp, reactive } from "../src";
 
   // for testing
   const data = (window.data = reactive({
-    id: 'green',
-    classes: ['foo', { red: true }],
-    style: { color: 'blue' },
+    id: "green",
+    classes: ["foo", { red: true }],
+    style: { color: "blue" },
     obj: {
-      class: 'orange'
+      class: "orange"
     }
-  }))
+  }));
 
-  createApp(data).mount()
+  createApp(data).mount();
 </script>
 
-<div v-scope v-cloak>
+<div v-data v-cloak>
   <div :id="id">simple binding - this should be green</div>
   <div class="static" :class="classes">
     class binding - this should be red and bold

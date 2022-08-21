@@ -1,7 +1,7 @@
 import { isArray, isObject } from '@vue/shared'
 import { Block } from '../block'
 import { evaluate } from '../eval'
-import { Context, createScopedContext } from '../context'
+import { Context, createdatadContext } from '../context'
 
 const forAliasRE = /([\s\S]*?)\s+(?:in|of)\s+([\s\S]*)/
 const forIteratorRE = /,([^,\}\]]*)(?:,([^,\}\]]*))?$/
@@ -102,8 +102,8 @@ export const _for = (el: Element, exp: string, ctx: Context) => {
     } else {
       indexExp && (data[indexExp] = index)
     }
-    const childCtx = createScopedContext(ctx, data)
-    const key = keyExp ? evaluate(childCtx.scope, keyExp) : index
+    const childCtx = createdatadContext(ctx, data)
+    const key = keyExp ? evaluate(childCtx.data, keyExp) : index
     map.set(key, index)
     childCtx.key = key
     return childCtx
@@ -117,7 +117,7 @@ export const _for = (el: Element, exp: string, ctx: Context) => {
   }
 
   ctx.effect(() => {
-    const source = evaluate(ctx.scope, sourceExp)
+    const source = evaluate(ctx.data, sourceExp)
     const prevKeyToIndexMap = keyToIndexMap
     ;[childCtxs, keyToIndexMap] = createChildContexts(source)
     if (!mounted) {
@@ -147,7 +147,7 @@ export const _for = (el: Element, exp: string, ctx: Context) => {
         } else {
           // update
           block = blocks[oldIndex]
-          Object.assign(block.ctx.scope, childCtx.scope)
+          Object.assign(block.ctx.data, childCtx.data)
           if (oldIndex !== i) {
             // moved
             if (

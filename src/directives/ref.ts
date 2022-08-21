@@ -3,7 +3,7 @@ import { Directive } from '.'
 export const ref: Directive = ({
   el,
   ctx: {
-    scope: { $refs }
+    data: { $refs }
   },
   get,
   effect
