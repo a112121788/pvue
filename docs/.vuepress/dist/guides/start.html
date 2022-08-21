@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>快速上手 | Pvue</title>
+    <meta name="generator" content="VuePress 1.9.7">
+    
+    <meta name="description" content="专门为在现有的由服务器框架呈现的 HTML 页面上进行少量的交互准备的轻量级 JS 库。">
+    
+    <link rel="preload" href="/assets/css/0.styles.1cfb4600.css" as="style"><link rel="preload" href="/assets/js/app.ffff190b.js" as="script"><link rel="preload" href="/assets/js/2.cfbf069b.js" as="script"><link rel="preload" href="/assets/js/10.52f3d314.js" as="script"><link rel="prefetch" href="/assets/js/3.e7fa49f7.js"><link rel="prefetch" href="/assets/js/4.0b532bcf.js"><link rel="prefetch" href="/assets/js/5.87d8e2d9.js"><link rel="prefetch" href="/assets/js/6.1ce14601.js"><link rel="prefetch" href="/assets/js/7.dfd2cd1c.js"><link rel="prefetch" href="/assets/js/8.f08c6adc.js"><link rel="prefetch" href="/assets/js/9.e78a6050.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.1cfb4600.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">Pvue</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <!----></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><!---->  <ul class="sidebar-links"><li><a href="/" aria-current="page" class="sidebar-link">介绍</a></li><li><a href="/guides/start.html" aria-current="page" class="active sidebar-link">快速上手</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/guides/start.html#iife版" class="sidebar-link">iife版</a></li><li class="sidebar-sub-header"><a href="/guides/start.html#es版" class="sidebar-link">ES版</a></li></ul></li><li><a href="/guides/api.html" class="sidebar-link">核心API</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/guides/api.html#指令" class="sidebar-link">指令</a></li><li class="sidebar-sub-header"><a href="/guides/api.html#魔法" class="sidebar-link">魔法</a></li><li class="sidebar-sub-header"><a href="/guides/api.html#全局函数" class="sidebar-link">全局函数</a></li></ul></li><li><a href="/guides/other.html" class="sidebar-link">其他</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/guides/other.html#组件" class="sidebar-link">组件</a></li><li class="sidebar-sub-header"><a href="/guides/other.html#自定义-delimiter" class="sidebar-link">自定义 delimiter</a></li><li class="sidebar-sub-header"><a href="/guides/other.html#多-mount" class="sidebar-link">多 mount</a></li><li class="sidebar-sub-header"><a href="/guides/other.html#reactive" class="sidebar-link">reactive</a></li></ul></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="快速上手"><a href="#快速上手" class="header-anchor">#</a> 快速上手</h1> <h2 id="iife版"><a href="#iife版" class="header-anchor">#</a> iife版</h2> <div class="language-html extra-class"><pre class="language-html"><code>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>https://cdn.jsdelivr.net/gh/a112121788/pvue/dist/pvue.iife.js<span class="token punctuation">&quot;</span></span> <span class="token attr-name">defer</span> <span class="token attr-name">init</span><span class="token punctuation">&gt;</span></span><span class="token script"></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">v-data</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>{ count: 0 }<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+  {{ count }}
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">@click</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>count++<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>inc<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">v-data</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>{ open: false }<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">@click</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>open=!open<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>Toggle<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span> <span class="token attr-name">v-show</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>open<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+      Content...
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+
+</code></pre></div><ul><li>使用 <code>v-data</code> 在页面上标记应该由 <code>pvue</code> 控制的区域。</li> <li><code>defer</code> 属性使脚本在解析完 HTML 内容后执行。</li> <li><code>init</code> 属性告诉 <code>pvue</code> 自动查询并初始化页面上所有有 <code>v-data</code> 的元素。</li></ul> <h2 id="es版"><a href="#es版" class="header-anchor">#</a> ES版</h2> <div class="language-html extra-class"><pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">v-data</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>{ count: 0 }<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+  {{ count }}
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">@click</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>count++<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>inc<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">v-data</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>{ open: false }<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">@click</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>open=!open<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>Toggle<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span> <span class="token attr-name">v-show</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>open<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+        Content...
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>module<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span><span class="token script"><span class="token language-javascript">
+  <span class="token keyword">import</span> <span class="token punctuation">{</span> createApp <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'https://cdn.jsdelivr.net/gh/a112121788/pvue/dist/pvue.es.js'</span>
+
+  <span class="token function">createApp</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+      <span class="token literal-property property">count</span><span class="token operator">:</span><span class="token number">0</span><span class="token punctuation">,</span>
+      <span class="token literal-property property">open</span><span class="token operator">:</span><span class="token boolean">false</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">mount</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
+</code></pre></div><p>建议使用 iife 版，部分浏览器并不支持 <code>&lt;script type=&quot;module&quot;&gt;</code>。</p></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/" class="prev router-link-active">
+        介绍
+      </a></span> <span class="next"><a href="/guides/api.html">
+        核心API
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.ffff190b.js" defer></script><script src="/assets/js/2.cfbf069b.js" defer></script><script src="/assets/js/10.52f3d314.js" defer></script>
+  </body>
+</html>
