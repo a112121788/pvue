@@ -207,9 +207,12 @@ v-bind允许您根据 JavaScript 表达式的结果为元素设置 HTML 属性�
 
 ### v-effect
 
+v-effect 是一个指令，用于执行 pvue 中的内联反应式语句。在下面的代码片段中，count 变量是反应式的，所以每当计数发生变化时，v-effect
+将重新运行，然后用count 的当前值更新div 。
+
 ```html
 
-<div v-data="{ count: 0 }">
+<div v-data="{ count: 0 }" v-cloak>
   <div v-effect="$el.textContent = count"></div>
   <button @click="count++">++</button>
 </div>
@@ -218,26 +221,6 @@ v-bind允许您根据 JavaScript 表达式的结果为元素设置 HTML 属性�
 ### v-for
 
 ```html
-
-<script type="module">
-  import { createApp } from '../src'
-
-  let id = 4
-  createApp({
-    list: [
-      { id: 1, text: 'bar' },
-      { id: 2, text: 'boo' },
-      { id: 3, text: 'baz' },
-      { id: 4, text: 'bazz' }
-    ],
-    add() {
-      this.list.push({ id: ++id, text: 'new item' })
-    },
-    splice() {
-      this.list.splice(1, 0, { id: ++id, text: 'new item' })
-    }
-  }).mount('#app')
-</script>
 
 <div id="app">
   <button @click="add">add</button>
@@ -257,32 +240,43 @@ v-bind允许您根据 JavaScript 表达式的结果为元素设置 HTML 属性�
   </ul>
 </div>
 
+<script>
+  let id = 4
+  Pvue.createApp({
+    list: [
+      { id: 1, text: 'bar' },
+      { id: 2, text: 'boo' },
+      { id: 3, text: 'baz' },
+      { id: 4, text: 'bazz' }
+    ],
+    add() {
+      this.list.push({ id: ++id, text: 'new item' })
+    },
+    splice() {
+      this.list.splice(1, 0, { id: ++id, text: 'new item' })
+    }
+  }).mount('#app')
+</script>
+
+
 ```
 
 ### v-html
 
 ```html
 
-<script type="module">
-  import { createApp } from '../src'
-
-  createApp().mount()
-</script>
-
 <div v-data="{ ele:'<span>Hello World</span>' }">
   <p v-html="ele"></p>
 </div>
+
+<script>
+  Pvue.createApp().mount()
+</script>
 ```
 
 ### v-if
 
 ```html
-
-<script type="module">
-  import { createApp } from '../src'
-
-  createApp().mount('#app')
-</script>
 
 <div id="app" v-data="{ open: true, elseOpen: true }">
   <button @click="open = !open">toggle</button>
@@ -292,17 +286,16 @@ v-bind允许您根据 JavaScript 表达式的结果为元素设置 HTML 属性�
   <template v-else>else</template>
 </div>
 
+<script>
+  Pvue.createApp().mount('#app')
+</script>
+
 ```
 
 ### v-model
 
 ```html
 
-<script type="module">
-  import { createApp } from "../src";
-
-  createApp().mount("#app");
-</script>
 
 <div
   id="app"
@@ -367,17 +360,17 @@ v-bind允许您根据 JavaScript 表达式的结果为元素设置 HTML 属性�
   </select>
   <div>{{ selected }}</div>
 </div>
+
+
+<script>
+  Pvue.createApp().mount("#app");
+</script>
 ```
 
 ### v-on
 
 ```html
 
-<script type="module">
-  import { createApp } from '../src'
-
-  createApp().mount('#app')
-</script>
 
 <div id="app">
   <input
@@ -393,17 +386,16 @@ v-bind允许您根据 JavaScript 表达式的结果为元素设置 HTML 属性�
   <button @click.once="alert('clicked')">click once</button>
 </div>
 
+<script>
+  Pvue.createApp().mount('#app')
+</script>
+
+
 ```
 
 ### v-once
 
 ```html
-
-<script type="module">
-  import { createApp } from '../src'
-
-  createApp().mount()
-</script>
 
 <div v-data="{ count: 5 }">
   {{ count }}
@@ -411,39 +403,36 @@ v-bind允许您根据 JavaScript 表达式的结果为元素设置 HTML 属性�
     <h2>Once</h2>
     {{ count }}
     <span v-text="count"></span>
-    <span v-for="i in count">{{ i }}</span>
   </div>
-  <span v-text="count"></span>
   <button @click="count++">++</button>
 </div>
+
+<script>
+  PVue.createApp().mount()
+</script>
 ```
 
 ### v-pre
 
 ```html
 
-<script type="module">
-  import { createApp } from '../src'
-
-  createApp().mount()
-</script>
-
 <div v-data="{ count: 0 }">
   <p>{{ count }}</p>
   <p v-pre> {{ count }}</p>
   <button @click="count++">increment</button>
 </div>
+
+<script type="module">
+  Pvue.createApp().mount()
+</script>
+
 ```
 
 ### v-ref
 
 ```html
 
-<script type="module">
-  import { createApp, reactive } from '../src'
 
-  createApp().mount()
-</script>
 
 <div
   id="root"
@@ -477,26 +466,22 @@ v-bind允许您根据 JavaScript 表达式的结果为元素设置 HTML 属性�
 
 ```html
 
-<script type="module">
-  import { createApp } from '../src'
-
-  createApp().mount('#app')
-</script>
-
 <div id="app" v-data="{ open: true }">
   <button @click="open = !open">toggle</button>
   <div v-show="open">ok</div>
 </div>
+
+<script>
+  Pvue.createApp().mount('#app')
+</script>
 ```
 
 ### v-text
 
 ```html
 
-<script type="module">
-  import { createApp } from '../src'
-
-  createApp().mount()
+<script>
+  Pvue.createApp().mount()
 </script>
 
 <div v-data="{ count: 1 }">
@@ -509,14 +494,6 @@ v-bind允许您根据 JavaScript 表达式的结果为元素设置 HTML 属性�
 
 ```html
 
-<script type="module">
-  import { createApp } from '../src'
-
-  createApp({
-    msg: 'content',
-    hide: false
-  }).mount()
-</script>
 
 <div v-data v-cloak>
   <div v-cloak v-if="!hide">{{ msg }}</div>
@@ -528,6 +505,13 @@ v-bind允许您根据 JavaScript 表达式的结果为元素设置 HTML 属性�
     display: none;
   }
 </style>
+
+<script>
+  Pvue.createApp({
+    msg: 'content',
+    hide: false
+  }).mount()
+</script>
 ```
 
 ## 全局函数
