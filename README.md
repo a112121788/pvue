@@ -146,7 +146,7 @@ effect 使用的是`Count`，这是一个反应性的数据源，所以每当`Co
 ```html
 
 <script src="https://cdn.jsdelivr.net/gh/a112121788/pvue/dist/pvue.iife.js"></script>
-<script type="module">
+<script>
   function Counter(props) {
     return {
       count: props.initialCount,
