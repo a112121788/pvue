@@ -15,6 +15,12 @@
 
 ```html
 
+
+
+
+
+
+
 <script src="https://unpkg.com/pvue" defer init></script>
 
 <!-- anywhere on the page -->
