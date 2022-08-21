@@ -12,6 +12,6 @@ export interface Context {
     delimiters: [string, string];
     delimitersRE: RegExp;
 }
-export declare const createContext: (parent?: Context | undefined) => Context;
+export declare const createContext: (parent?: Context) => Context;
 export declare const createdDataContext: (ctx: Context, data?: {}) => Context;
 export declare const bindContextMethods: (data: Record<string, any>) => void;
