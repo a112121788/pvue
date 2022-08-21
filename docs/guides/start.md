@@ -3,7 +3,6 @@
 ## iife版
 
 ```html
-
 <script src="https://cdn.jsdelivr.net/gh/a112121788/pvue/dist/pvue.iife.js" defer init></script>
 
 <div v-data="{ count: 0 }">

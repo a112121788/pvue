@@ -44,7 +44,7 @@ export const createContext = (parent?: Context): Context => {
   return ctx
 }
 
-export const createdatadContext = (ctx: Context, data = {}): Context => {
+export const createdDataContext = (ctx: Context, data = {}): Context => {
   const parentdata = ctx.data
   const mergeddata = Object.create(parentdata)
   Object.defineProperties(mergeddata, Object.getOwnPropertyDescriptors(data))

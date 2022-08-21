@@ -1,7 +1,7 @@
 import { isArray, isObject } from '@vue/shared'
 import { Block } from '../block'
 import { evaluate } from '../eval'
-import { Context, createdatadContext } from '../context'
+import { Context, createdDataContext } from '../context'
 
 const forAliasRE = /([\s\S]*?)\s+(?:in|of)\s+([\s\S]*)/
 const forIteratorRE = /,([^,\}\]]*)(?:,([^,\}\]]*))?$/
@@ -102,7 +102,7 @@ export const _for = (el: Element, exp: string, ctx: Context) => {
     } else {
       indexExp && (data[indexExp] = index)
     }
-    const childCtx = createdatadContext(ctx, data)
+    const childCtx = createdDataContext(ctx, data)
     const key = keyExp ? evaluate(childCtx.data, keyExp) : index
     map.set(key, index)
     childCtx.key = key

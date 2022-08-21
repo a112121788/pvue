@@ -7,7 +7,7 @@ import { text } from "./directives/text";
 import { evaluate } from "./eval";
 import { checkAttr } from "./utils";
 import { ref } from "./directives/ref";
-import { Context, createdatadContext } from "./context";
+import { Context, createdDataContext } from "./context";
 
 const dirRE = /^(?:v-|:|@)/;
 const modifierRE = /\.([\w-]+)/g;
@@ -40,7 +40,7 @@ export const walk = (node: Node, ctx: Context): ChildNode | null | void => {
     // v-data
     if ((exp = checkAttr(el, "v-data")) || exp === "") {
       const data = exp ? evaluate(ctx.data, exp, el) : {};
-      ctx = createdatadContext(ctx, data);
+      ctx = createdDataContext(ctx, data);
       if (data.$template) {
         resolveTemplate(el, data.$template);
       }
