@@ -1,6 +1,6 @@
 {
   "name": "pvue",
-  "version": "0.5.0",
+  "version": "0.5.2",
   "description": "8kb subset of Vue optimized for progressive enhancement",
   "files": [
     "dist"
@@ -26,12 +26,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/vuejs/pvue.git"
+    "url": "git+https://github.com/a112121788/pvue.git"
   },
   "keywords": [
     "vue"
   ],
-  "author": "Evan You",
+  "author": "a112121788",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/a112121788/pvue/issues"
