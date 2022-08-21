@@ -32,9 +32,9 @@
   "author": "Evan You",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/vuejs/pvue/discussions"
+    "url": "https://github.com/a112121788/pvue/issues"
   },
-  "homepage": "https://github.com/vuejs/pvue#readme",
+  "homepage": "https://github.com/a112121788/pvue#readme",
   "devDependencies": {
     "@vue/reactivity": "^3.2.27",
     "@vue/shared": "^3.2.27",
