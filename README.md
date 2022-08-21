@@ -49,7 +49,7 @@
 ### 生产环境 CDN 地址
 
 - 最新版： `https://cdn.jsdelivr.net/gh/a112121788/pvue/dist/pvue.iife.js`
-- 具体某个版本：`https://cdn.jsdelivr.net/gh/a112121788/pvue@0.5.0/dist/pvue.iife.js`
+- 具体某个版本：`https://cdn.jsdelivr.net/gh/a112121788/pvue@0.5.2/dist/pvue.iife.js`
 
 ### 根域
 
