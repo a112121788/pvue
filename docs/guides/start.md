@@ -1,6 +1,6 @@
 # 快速上手
 
-## iife版
+## iife 版
 
 ```html
 <script src="https://cdn.jsdelivr.net/gh/a112121788/pvue/dist/pvue.iife.js" defer init></script>
@@ -23,7 +23,7 @@
 - `defer` 属性使脚本在解析完 HTML 内容后执行。
 - `init` 属性告诉 `pvue` 自动查询并初始化页面上所有有 `v-data` 的元素。
 
-## ES版
+## ES 版
 
 ```html
 <div v-data="{ count: 0 }">

@@ -1,9 +1,17 @@
 # 介绍
 
-::: tip
-专门为在现有的由服务器框架呈现的 HTML 页面上进行少量的交互准备的轻量级 JS 库，还在不断开发中。
-:::
+`pvue` 是 [vue](https://vuejs.org) 的优化替代发行版。它提供了与标准 Vue 相同的模板语法和响应式模型，
 
+不过它是专门为在现有的由服务端渲染的 HTML 页面上进行少量的交互准备的轻量级 JS 库。
+
+## 特点
+
+- 仅 ~8kb
+- Vue-兼容的模板语法
+- 基于 DOM, 原地变换
+- 由 `@vue/reactivity` 驱动
+
+pvue 无需构建，直接通过 cdn/url 引入即可，非常方便在由服务端渲染 HTML 页面的项目中集成：
 
 ```html
 <script src="https://cdn.jsdelivr.net/gh/a112121788/pvue/dist/pvue.iife.js" defer init></script>
@@ -19,15 +27,8 @@
       Content...
     </span>
 </div>
-
 ```
 
-`pvue` 是 [vue](https://vuejs.org) 的优化的替代发行版。它提供了与标准 Vue 相同的模板语法和响应式模型，
-不过它是专门为在现有的由服务器框架呈现的 HTML 页面上进行少量的交互准备的轻量级 JS 库。
+## 致敬
 
-- 仅 ~8kb
-- Vue-兼容的模板语法
-- 基于 DOM, 原地变换
-- 由 `@vue/reactivity` 驱动
-
-
+pvue 源于 [petite-vue](https://github.com/vuejs/petite-vue)，并持续更新。pvue 尽可能保持与 vue 兼容。
