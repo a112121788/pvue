@@ -175,6 +175,34 @@ v-data 指令中定义的属性可用于所有子元素。甚至在其他嵌套 
 </div>
 ```
 
+## v-away
+
+监听元素之外的点击事件。这是一个常见的需求，并且手动实现它既烦人又复杂。
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="./pvue.iife.js" defer init></script>
+  <title>Document</title>
+  <style>
+  </style>
+</head>
+<body>
+  <div v-data="{ open: false }">
+    <button @click="open=!open">Toggle</button>
+    <span v-show="open" v-away:open="open=false" >
+        点击我之外的区域
+      </span>
+  </div>
+</body>
+</html>
+```
+
 ##  v-bind
 
 v-bind 允许您根据 JavaScript 表达式的结果为元素设置 HTML 属性。

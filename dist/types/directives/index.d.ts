@@ -1,5 +1,5 @@
-import { Context } from '../context';
-import { effect as rawEffect } from '@vue/reactivity';
+import { Context } from "../context";
+import { effect as rawEffect } from "@vue/reactivity";
 export interface Directive<T = Element> {
     (ctx: DirectiveContext<T>): (() => void) | void;
 }

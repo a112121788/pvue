@@ -1,25 +1,26 @@
-import { Context } from '../context'
-import { effect as rawEffect } from '@vue/reactivity'
-import { bind } from './bind'
-import { on } from './on'
-import { show } from './show'
-import { text } from './text'
-import { html } from './html'
-import { model } from './model'
-import { effect } from './effect'
+import { Context } from "../context";
+import { effect as rawEffect } from "@vue/reactivity";
+import { bind } from "./bind";
+import { on } from "./on";
+import { show } from "./show";
+import { text } from "./text";
+import { html } from "./html";
+import { model } from "./model";
+import { effect } from "./effect";
+import { away } from "./away";
 
 export interface Directive<T = Element> {
-  (ctx: DirectiveContext<T>): (() => void) | void
+  (ctx: DirectiveContext<T>): (() => void) | void;
 }
 
 export interface DirectiveContext<T = Element> {
-  el: T
-  get: (exp?: string) => any
-  effect: typeof rawEffect
-  exp: string
-  arg?: string
-  modifiers?: Record<string, true>
-  ctx: Context
+  el: T;
+  get: (exp?: string) => any;
+  effect: typeof rawEffect;
+  exp: string;
+  arg?: string;
+  modifiers?: Record<string, true>;
+  ctx: Context;
 }
 
 export const builtInDirectives: Record<string, Directive<any>> = {
@@ -29,5 +30,6 @@ export const builtInDirectives: Record<string, Directive<any>> = {
   text,
   html,
   model,
-  effect
-}
+  effect,
+  away
+};
