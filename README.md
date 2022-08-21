@@ -14,14 +14,7 @@
 `pvue` 无需构建可使用，只需从 CDN 加载即可：
 
 ```html
-
-
-
-
-
-
-
-<script src="https://unpkg.com/pvue" defer init></script>
+<script src="https://cdn.jsdelivr.net/gh/a112121788/pvue/dist/pvue.iife.js" defer init></script>
 
 <!-- anywhere on the page -->
 <div v-scope="{ count: 0 }">
@@ -40,7 +33,7 @@
 
 ```html
 
-<script src="https://unpkg.com/pvue"></script>
+<script src="https://cdn.jsdelivr.net/gh/a112121788/pvue/dist/pvue.iife.js"></script>
 <script>
   Pvue.createApp().mount()
 </script>
@@ -52,7 +45,7 @@
 ```html
 
 <script type="module">
-  import { createApp } from 'https://unpkg.com/pvue?module'
+  import { createApp } from 'https://cdn.jsdelivr.net/gh/a112121788/pvue/dist/pvue.es.js'
 
   createApp().mount()
 </script>
@@ -62,9 +55,9 @@
 
 简短的 CDN URL 用于原型制作。如果是生产用途，请使用完全解析的 CDN URL，避免解析和重定向：
 
-- 全局构建：`https://unpkg.com/pvue@0.4.1/dist/pvue.iife.js`
+- 全局构建：`https://cdn.jsdelivr.net/gh/a112121788/pvue@0.5.0/dist/pvue.iife.js`
     - 导出 `Pvue` 为全局变量，支持自动初始化。
-- ESM 构建：`https://unpkg.com/pvue@0.4.1/dist/pvue.es.js`
+- ESM 构建：`https://cdn.jsdelivr.net/gh/a112121788/pvue@0.5.0/dist/pvue.es.js`
     - 必须与 `<script type="module">` 一起使用
 
 ### 根域
@@ -74,7 +67,7 @@
 ```html
 
 <script type="module">
-  import { createApp } from 'https://unpkg.com/pvue?module'
+  import { createApp } from 'https://cdn.jsdelivr.net/gh/a112121788/pvue@0.5.0/dist/pvue.es.js'
 
   createApp({
     // exposed to all expressions
@@ -162,7 +155,7 @@ effect 使用的是`Count`，这是一个反应性的数据源，所以每当`Co
 ```html
 
 <script type="module">
-  import { createApp } from 'https://unpkg.com/pvue?module'
+  import { createApp } from 'https://cdn.jsdelivr.net/gh/a112121788/pvue@0.5.0/dist/pvue.es.js'
 
   function Counter(props) {
     return {
@@ -199,7 +192,7 @@ effect 使用的是`Count`，这是一个反应性的数据源，所以每当`Co
 ```html
 
 <script type="module">
-  import { createApp } from 'https://unpkg.com/pvue?module'
+  import { createApp } from 'https://cdn.jsdelivr.net/gh/a112121788/pvue@0.5.0/dist/pvue.es.js'
 
   function Counter(props) {
     return {
@@ -235,7 +228,7 @@ effect 使用的是`Count`，这是一个反应性的数据源，所以每当`Co
 ```html
 
 <script type="module">
-  import { createApp, reactive } from 'https://unpkg.com/pvue?module'
+  import { createApp, reactive } from 'https://cdn.jsdelivr.net/gh/a112121788/pvue@0.5.0/dist/pvue.es.js'
 
   const store = reactive({
     count: 0,
