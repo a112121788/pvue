@@ -4,6 +4,7 @@
 
 ## mounted 和 unmounted
 
+### 示例 1
 ```html
 
 <div
@@ -13,8 +14,10 @@
 ></div>
 ```
 
+### 示例 2
+
 ```html
-<!-- v-scope value can be omitted -->
+<!-- v-data value can be omitted -->
 <div v-data>
   <p>{{ count }}</p>
   <p @vue:mounted="mounted($el)" @vue:unmounted="unmounted($el)">{{ plusOne }}

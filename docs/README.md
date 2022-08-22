@@ -1,10 +1,8 @@
-# 介绍
+# Pvue 介绍
 
-`pvue` 是 [vue](https://vuejs.org) 的优化替代发行版。它提供了与标准 Vue 相同的模板语法和响应式模型，
+`pvue`  一款专门专注于渐进增强 MPA(多页应用) 交互的响应式 JavaScript 库。
 
-不过它是专门为在现有的由服务端渲染的 HTML 页面上进行少量的交互准备的轻量级 JS 库。
-
-## 特点
+## 核心特点
 
 - 提供精简版的与 Vue3 语法和表现一致的模板语言；
 - 仅由渲染模块和响应式系统模块组成；
@@ -34,12 +32,12 @@ pvue 无需构建，直接通过 cdn/url 引入即可，非常方便在由服务
 ## 项目背景
 
 pvue 源于 [petite-vue](https://github.com/vuejs/petite-vue)，petitle-vue 由尤雨溪亲自操刀设计开发，
-针对历史非前后端分离项目专门打造的，基于 Vue3 的@vue/reactivity 提供与 Vue 一致的响应式开发模式的渐进式前端开发框架。
+针对历史非前后端分离项目专门打造的，基于 Vue3 的 @vue/reactivity 提供与 Vue 一致的响应式开发模式的渐进式前端开发框架。
 
 
-由于尤雨溪的核心精力在 Vue 主项目，petitle-vue 几乎不再更新，
-故给予 petitle-vue 开发了本项目，并持续更新。pvue 尽可能保持与 vue 兼容。
+由于尤雨溪的核心精力在 Vue 主项目，petitle-vue 几乎不再更新，故基于 petitle-vue 开发了本项目，并持续更新。
 
+pvue 尽可能保持与 vue 语法兼容。
 
 
 ## 快速上手
