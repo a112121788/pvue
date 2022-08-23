@@ -1,77 +1,77 @@
-import { Block } from '../block'
-import { evaluate } from '../eval'
-import { checkAttr } from '../utils'
-import { Context } from '../context'
+import { Block } from "../block";
+import { evaluate } from "../eval";
+import { checkAttr } from "../utils";
+import { Context } from "../context";
 
 interface Branch {
-  exp?: string | null
-  el: Element
+  exp?: string | null;
+  el: Element;
 }
 
 export const _if = (el: Element, exp: string, ctx: Context) => {
   if (import.meta.env.DEV && !exp.trim()) {
-    console.warn(`v-if expression cannot be empty.`)
+    console.warn(`v-if expression cannot be empty.`);
   }
 
-  const parent = el.parentElement!
-  const anchor = new Comment('v-if')
-  parent.insertBefore(anchor, el)
+  const parent = el.parentElement!;
+  const anchor = new Comment("v-if");
+  parent.insertBefore(anchor, el);
 
   const branches: Branch[] = [
     {
       exp,
       el
     }
-  ]
+  ];
 
   // locate else branch
-  let elseEl: Element | null
-  let elseExp: string | null
+  let elseEl: Element | null;
+  let elseExp: string | null;
   while ((elseEl = el.nextElementSibling)) {
-    elseExp = null
+    elseExp = null;
     if (
-      checkAttr(elseEl, 'v-else') === '' ||
-      (elseExp = checkAttr(elseEl, 'v-else-if'))
+      checkAttr(elseEl, "v-else") === "" ||
+      (elseExp = checkAttr(elseEl, "v-else-if"))
     ) {
-      parent.removeChild(elseEl)
-      branches.push({ exp: elseExp, el: elseEl })
+      parent.removeChild(elseEl);
+      branches.push({ exp: elseExp, el: elseEl });
     } else {
-      break
+      break;
     }
   }
 
-  const nextNode = el.nextSibling
-  parent.removeChild(el)
+  const nextNode = el.nextSibling;
+  parent.removeChild(el);
 
-  let block: Block | undefined
-  let activeBranchIndex: number = -1
+  let block: Block | undefined;
+  let activeBranchIndex: number = -1;
 
   const removeActiveBlock = () => {
     if (block) {
-      parent.insertBefore(anchor, block.el)
-      block.remove()
-      block = undefined
+      parent.insertBefore(anchor, block.el);
+      block.remove();
+      block = undefined;
     }
-  }
+  };
 
   ctx.effect(() => {
     for (let i = 0; i < branches.length; i++) {
-      const { exp, el } = branches[i]
+      const { exp, el } = branches[i];
       if (!exp || evaluate(ctx.data, exp)) {
         if (i !== activeBranchIndex) {
-          removeActiveBlock()
-          block = new Block(el, ctx)
-          block.insert(parent, anchor)
-          parent.removeChild(anchor)
-          activeBranchIndex = i
+          removeActiveBlock();
+          block = new Block(el, ctx);
+          block.insert(parent, anchor);
+          parent.removeChild(anchor);
+          activeBranchIndex = i;
         }
-        return
+        return;
       }
     }
     // no matched branch.
-    activeBranchIndex = -1
-    removeActiveBlock()
-  })
+    activeBranchIndex = -1;
+    removeActiveBlock();
+  });
 
-  return nextNode
-}
+  return nextNode;
+};

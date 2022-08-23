@@ -1,23 +1,23 @@
-import { Directive } from '.'
+import { Directive } from ".";
 
 export const ref: Directive = ({
-  el,
-  ctx: {
-    data: { $refs }
-  },
-  get,
-  effect
-}) => {
-  let prevRef: any
+                                 el,
+                                 ctx: {
+                                   data: { $refs }
+                                 },
+                                 get,
+                                 effect
+                               }) => {
+  let prevRef: any;
   effect(() => {
-    const ref = get()
-    $refs[ref] = el
+    const ref = get();
+    $refs[ref] = el;
     if (prevRef && ref !== prevRef) {
-      delete $refs[prevRef]
+      delete $refs[prevRef];
     }
-    prevRef = ref
-  })
+    prevRef = ref;
+  });
   return () => {
-    prevRef && delete $refs[prevRef]
-  }
-}
+    prevRef && delete $refs[prevRef];
+  };
+};
