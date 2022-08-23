@@ -1,30 +1,30 @@
 <script type="module">
-  import { createApp, reactive } from '../src'
+  import { createApp, reactive } from "../src";
 
-  const API_URL = `https://api.github.com/repos/vuejs/vue-next/commits?per_page=3&sha=`
+  const API_URL = `https://api.github.com/repos/vuejs/vue-next/commits?per_page=3&sha=`;
 
   createApp({
-    branches: ['main', 'v2-compat'],
-    currentBranch: 'main',
+    branches: ["main", "v2-compat"],
+    currentBranch: "main",
     commits: null,
 
     truncate(v) {
-      const newline = v.indexOf('\n')
-      return newline > 0 ? v.slice(0, newline) : v
+      const newline = v.indexOf("\n");
+      return newline > 0 ? v.slice(0, newline) : v;
     },
 
     formatDate(v) {
-      return v.replace(/T|Z/g, ' ')
+      return v.replace(/T|Z/g, " ");
     },
 
     fetchData() {
       fetch(`${API_URL}${this.currentBranch}`)
         .then((res) => res.json())
         .then((data) => {
-          this.commits = data
-        })
+          this.commits = data;
+        });
     }
-  }).mount()
+  }).mount();
 </script>
 
 <div v-data v-effect="fetchData()">
@@ -43,14 +43,14 @@
   <ul>
     <li v-for="{ html_url, sha, author, commit } in commits">
       <a :href="html_url" target="_blank" class="commit"
-        >{{ sha.slice(0, 7) }}</a
+      >{{ sha.slice(0, 7) }}</a
       >
       - <span class="message">{{ truncate(commit.message) }}</span><br />
       by
       <span class="author"
-        ><a :href="author.html_url" target="_blank"
-          >{{ commit.author.name }}</a
-        ></span
+      ><a :href="author.html_url" target="_blank"
+      >{{ commit.author.name }}</a
+      ></span
       >
       at <span class="date">{{ formatDate(commit.author.date) }}</span>
     </li>
@@ -58,18 +58,21 @@
 </div>
 
 <style>
-  body {
-    font-family: 'Helvetica', Arial, sans-serif;
-  }
-  a {
-    text-decoration: none;
-    color: #f66;
-  }
-  li {
-    line-height: 1.5em;
-    margin-bottom: 20px;
-  }
-  .author, .date {
-    font-weight: bold;
-  }
+    body {
+        font-family: 'Helvetica', Arial, sans-serif;
+    }
+
+    a {
+        text-decoration: none;
+        color: #f66;
+    }
+
+    li {
+        line-height: 1.5em;
+        margin-bottom: 20px;
+    }
+
+    .author, .date {
+        font-weight: bold;
+    }
 </style>

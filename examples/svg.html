@@ -1,65 +1,65 @@
 <script type="module">
-  import { createApp } from '../src'
+  import { createApp } from "../src";
 
   function valueToPoint(value, index, total) {
-    var x = 0
-    var y = -value * 0.8
-    var angle = ((Math.PI * 2) / total) * index
-    var cos = Math.cos(angle)
-    var sin = Math.sin(angle)
-    var tx = x * cos - y * sin + 100
-    var ty = x * sin + y * cos + 100
+    var x = 0;
+    var y = -value * 0.8;
+    var angle = ((Math.PI * 2) / total) * index;
+    var cos = Math.cos(angle);
+    var sin = Math.sin(angle);
+    var tx = x * cos - y * sin + 100;
+    var ty = x * sin + y * cos + 100;
 
     if (ty < 0) debugger
     return {
       x: tx,
       y: ty
-    }
+    };
   }
 
   createApp({
-    newLabel: '',
+    newLabel: "",
     stats: [
-      { label: 'A', value: 100 },
-      { label: 'B', value: 100 },
-      { label: 'C', value: 100 },
-      { label: 'D', value: 100 },
-      { label: 'E', value: 100 },
-      { label: 'F', value: 100 }
+      { label: "A", value: 100 },
+      { label: "B", value: 100 },
+      { label: "C", value: 100 },
+      { label: "D", value: 100 },
+      { label: "E", value: 100 },
+      { label: "F", value: 100 }
     ],
 
     get pointsString() {
       return this.getPoints()
         .map(({ x, y }) => `${x},${y}`)
-        .join(' ')
+        .join(" ");
     },
 
     getPoints(offset = 0) {
-      const total = this.stats.length
+      const total = this.stats.length;
       return this.stats.map((stat, i) => ({
         ...valueToPoint(+stat.value + offset, i, total),
         label: stat.label
-      }))
+      }));
     },
 
     add(e) {
-      e.preventDefault()
-      if (!this.newLabel) return
+      e.preventDefault();
+      if (!this.newLabel) return;
       this.stats.push({
         label: this.newLabel,
         value: 100
-      })
-      this.newLabel = ''
+      });
+      this.newLabel = "";
     },
 
     remove(stat) {
       if (this.stats.length > 3) {
-        this.stats.splice(this.stats.indexOf(stat), 1)
+        this.stats.splice(this.stats.indexOf(stat), 1);
       } else {
-        alert("Can't delete more!")
+        alert("Can't delete more!");
       }
     }
-  }).mount()
+  }).mount();
 </script>
 
 <div v-data>
@@ -85,35 +85,35 @@
 </div>
 
 <style>
-  body {
-    font-family: Helvetica Neue, Arial, sans-serif;
-  }
+    body {
+        font-family: Helvetica Neue, Arial, sans-serif;
+    }
 
-  polygon {
-    fill: #42b983;
-    opacity: 0.75;
-  }
+    polygon {
+        fill: #42b983;
+        opacity: 0.75;
+    }
 
-  circle {
-    fill: transparent;
-    stroke: #999;
-  }
+    circle {
+        fill: transparent;
+        stroke: #999;
+    }
 
-  text {
-    font-family: Helvetica Neue, Arial, sans-serif;
-    font-size: 10px;
-    fill: #666;
-  }
+    text {
+        font-family: Helvetica Neue, Arial, sans-serif;
+        font-size: 10px;
+        fill: #666;
+    }
 
-  label {
-    display: inline-block;
-    margin-left: 10px;
-    width: 20px;
-  }
+    label {
+        display: inline-block;
+        margin-left: 10px;
+        width: 20px;
+    }
 
-  #raw {
-    position: absolute;
-    top: 0;
-    left: 300px;
-  }
+    #raw {
+        position: absolute;
+        top: 0;
+        left: 300px;
+    }
 </style>

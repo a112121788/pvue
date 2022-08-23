@@ -1,10 +1,12 @@
 <script type="module">
-  import { createApp } from '../src'
-  createApp().mount()
+  import { createApp } from "../src";
+
+  createApp().mount();
 </script>
 
 <div v-data="{ msg: 'one' }">
-  {{ msg }} <button @click="msg = 1">Change one</button>
+  {{ msg }}
+  <button @click="msg = 1">Change one</button>
 </div>
 
 <div v-data="{ msg: 'two', outer: 'outer' }">

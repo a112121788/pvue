@@ -1,20 +1,20 @@
 <script type="module">
-  import { createApp, reactive } from '../src'
+  import { createApp, reactive } from "../src";
 
   const store = reactive({
     count: 0,
     inc() {
-      this.count++
+      this.count++;
     }
-  })
+  });
 
   // manipulate it here
-  store.inc()
+  store.inc();
 
   createApp({
     // share it with app datas
     store
-  }).mount()
+  }).mount();
 </script>
 
 <div v-data="{ localCount: 0 }">

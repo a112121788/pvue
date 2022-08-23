@@ -1,61 +1,61 @@
 <script type="module">
-  import { createApp } from '../src'
+  import { createApp } from "../src";
 
   const treeData = {
-    name: 'My Tree',
+    name: "My Tree",
     children: [
-      { name: 'hello' },
-      { name: 'wat' },
+      { name: "hello" },
+      { name: "wat" },
       {
-        name: 'child folder',
+        name: "child folder",
         children: [
           {
-            name: 'child folder',
-            children: [{ name: 'hello' }, { name: 'wat' }]
+            name: "child folder",
+            children: [{ name: "hello" }, { name: "wat" }]
           },
-          { name: 'hello' },
-          { name: 'wat' },
+          { name: "hello" },
+          { name: "wat" },
           {
-            name: 'child folder',
-            children: [{ name: 'hello' }, { name: 'wat' }]
+            name: "child folder",
+            children: [{ name: "hello" }, { name: "wat" }]
           }
         ]
       }
     ]
-  }
+  };
 
   function TreeItem(model) {
     return {
-      $template: '#item-template',
+      $template: "#item-template",
       model,
       open: false,
       get isFolder() {
-        return model.children && model.children.length
+        return model.children && model.children.length;
       },
       toggle() {
         if (this.isFolder) {
-          this.open = !this.open
+          this.open = !this.open;
         }
       },
       changeType() {
         if (!this.isFolder) {
-          model.children = []
-          this.addChild()
-          this.open = true
+          model.children = [];
+          this.addChild();
+          this.open = true;
         }
       },
       addChild() {
         model.children.push({
-          name: 'new stuff'
-        })
+          name: "new stuff"
+        });
       }
-    }
+    };
   }
 
   createApp({
     TreeItem,
     treeData
-  }).mount()
+  }).mount();
 </script>
 
 <template id="item-template">
@@ -75,14 +75,16 @@
 </ul>
 
 <style>
-  body {
-    font-family: Menlo, Consolas, monospace;
-    color: #444;
-  }
-  .item {
-    cursor: pointer;
-  }
-  .bold {
-    font-weight: bold;
-  }
+    body {
+        font-family: Menlo, Consolas, monospace;
+        color: #444;
+    }
+
+    .item {
+        cursor: pointer;
+    }
+
+    .bold {
+        font-weight: bold;
+    }
 </style>
