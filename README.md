@@ -4,7 +4,7 @@
 不过它是专门为在现有的由服务器框架呈现的 HTML 页面上进行少量的交互准备的轻量级 JS 库。
 
 - 仅 ~8kb
-- Vue-兼容的模板语法
+- Vue 兼容的模板语法
 - 基于 DOM, 原地变换
 - 由 `@vue/reactivity` 驱动
 
@@ -27,7 +27,6 @@
       Content...
     </span>
 </div>
-
 ```
 
 - 使用 `v-data` 在页面上标记应该由 `pvue` 控制的区域。
@@ -36,7 +35,7 @@
 
 ### 手动初始化
 
-如果您不想要自动初始化，可以去掉 `init` 属性，将脚本移到 `<BODY>` 的末尾：
+如果你不想要自动初始化，可以去掉 `init` 属性，将脚本移到 `<body>` 的末尾：
 
 ```html
 
@@ -49,7 +48,7 @@
 ### 生产环境 CDN 地址
 
 - 最新版： `https://cdn.jsdelivr.net/gh/a112121788/pvue/dist/pvue.iife.js`
-- 具体某个版本：`https://cdn.jsdelivr.net/gh/a112121788/pvue@0.5.2/dist/pvue.iife.js`
+- 具体某个版本：`https://cdn.jsdelivr.net/gh/a112121788/pvue@0.5.3/dist/pvue.iife.js`
 
 ### 根域
 
@@ -86,27 +85,27 @@
 
 ### 显式装载目标
 
-您可以指定挂载目标 (选择器或元素)，将 `pvue` 限制为页面的该区域：
+你可以指定挂载目标 (选择器或元素)，将 `pvue` 限制为页面的该区域：
 
 ```js
-createApp().mount('#only-this-div')
+Pvue.createApp().mount('#only-this-div')
 ```
 
-这也意味着您可以在同一页面上有多个`pvue`应用来控制不同的地域：
+这也意味着你可以在同一页面上有多个`pvue`应用来控制不同的地域：
 
 ```js
 Pvue.createApp({
   // root data for app one
 }).mount('#app1')
 
-createApp({
+Pvue.createApp({
   // root data for app two
 }).mount('#app2')
 ```
 
 ### 生命周期事件
 
-您可以监听每个元素特殊的 `vue:mounted` 和 `vue:unounted` 生命周期事件 (v0.4.0 开始需要 `vue：` 前缀)：
+你可以监听每个元素特殊的 `vue:mounted` 和 `vue:unounted` 生命周期事件：
 
 ```html
 
@@ -119,7 +118,7 @@ createApp({
 
 ### `v-effect`
 
-Use `v-effect` to execute **reactive** inline statements:
+使用 `v-effect` 执行 **reactive** 内联语句：
 
 ```html
 
@@ -129,17 +128,16 @@ Use `v-effect` to execute **reactive** inline statements:
 </div>
 ```
 
-effect 使用的是`Count`，这是一个反应性的数据源，所以每当`Count`发生变化时，它都会重新运行。
+v-effect 使用 `count`，这是一个反应性的数据源，所以每当` count` 发生变化时，它都会重新运行。
 
-替换原始 Vue TodoMVC 示例中的`todo-focus` 指令的另一个示例：
-
+另一个示例：
 ```html
 <input v-effect="if (todo === editedTodo) $el.focus()" />
 ```
 
 ### 组件
 
-在 `pvue` 中，“组件”的概念是不同的，因为它更基本。
+在 `pvue` 中，"组件" 的概念是不同的，因为它更基本。
 
 首先，可以使用函数创建可重用的作用域逻辑：
 
@@ -177,8 +175,7 @@ effect 使用的是`Count`，这是一个反应性的数据源，所以每当`Co
 
 ### 带模板的组件
 
-如果您还想重用一个模板，可以在 data 对象上提供一个特殊的 `$template` 键。该值可以是模板字符串，也可以是`<template>`元素的
-ID 选择符：
+如果你还想重用一个模板，可以在 data 对象上提供一个特殊的 `$template` 键。该值可以是模板字符串，也可以是 `<template>` 元素的 ID 选择符：
 
 ```html
 
@@ -213,7 +210,7 @@ ID 选择符：
 
 ### 全局状态管理
 
-您可以使用`reactive`方法 (从`@vue/reactivity`重新导出) 创建全局单一状态：
+你可以使用 `reactive` 方法 (从 `@vue/reactivity` 重新导出) 创建全局单一状态：
 
 ```html
 
@@ -276,7 +273,7 @@ const myDirective = (ctx) => {
 }
 
 // register the directive
-createApp().directive('my-dir', myDirective).mount()
+Pvue.createApp().directive('my-dir', myDirective).mount()
 ```
 
 `v-html` 的实现方式如下：
@@ -291,7 +288,7 @@ const html = ({ el, get, effect }) => {
 
 ### 自定义分隔符 (0.3+)
 
-您可以通过向根作用域传递 `$delimiters` 来使用自定义分隔符。这在与同时使用 mustaches 的服务器端模板语言一起工作时非常有用：
+你可以通过向根作用域传递 `$delimiters` 来使用自定义分隔符。这在与同时使用 mustaches 的服务器端模板语言一起工作时非常有用：
 
 ```js
 createApp({
@@ -301,7 +298,7 @@ createApp({
 
 ### 使用插件
 
-您可以编写自定义指令，然后将其作为包分发，然后将它添加到创建 vue 中，如：
+你可以编写自定义指令，然后将其作为包分发，然后将它添加到创建 vue 中，如：
 
 ```html
 
@@ -332,7 +329,7 @@ export default {
 
 ## 示例
 
-查看[示例目录](./examples).
+查看 [示例目录](./examples).
 
 ## 特性
 
@@ -344,17 +341,17 @@ export default {
 
 ### 不同的行为
 
-- 在表达式中，`$el`指向指令绑定到的当前元素（而不是组件根元素）
-- `createApp()`接受全局状态而不是组件
+- 在表达式中，`$el` 指向指令绑定到的当前元素（而不是组件根元素）
+- `createApp()` 接受全局状态而不是组件
 - 组件被简化为对象返回函数
 - 自定义指令具有不同的接口
 
 ### Vue 兼容
 
 - `{{ }}` 文本绑定（可配置自定义定界符）
-- `v-bind`（包括`:`速记和类/样式特殊处理）
-- `v-on`（包括`@`速记和所有修饰语）
-- `v-model`（所有输入类型 + 非字符串` :value` 绑定）
+- `v-bind`（包括 `:` 速记和类/样式特殊处理）
+- `v-on`（包括 `@` 速记和所有修饰语）
+- `v-model`（所有输入类型 + 非字符串 `:value` 绑定）
 - `v-if` / `v-else` / `v-else-if`
 - `v-for`
 - `v-show`
@@ -365,11 +362,11 @@ export default {
 - `v-cloak`
 - `reactive()`
 - `nextTick()`
-- Template refs
+-  `refs`
 
 ### 不支持特性
 
-一些特征被丢弃，因为它们在渐进增强的上下文中具有相对低的效用/大小比。如果您需要这些功能，您可能只需要使用标准的 Vue。
+一些特征被丢弃，因为它们在渐进增强的上下文中具有相对低的效用/大小比。如果你需要这些功能，你可能只需要使用标准的 Vue。
 
 - `ref()`, `computed()` 等。
 - Render 函数 (`pvue` 没有虚拟 dom)
@@ -382,10 +379,10 @@ export default {
 
 ## 与标准 Vue 的差别
 
-“pvue”的意义不仅仅在于小。它是关于使用预期用例的最佳实现（渐进增强）。
+“pvue” 的意义不仅仅在于小。它是关于使用预期用例的最佳实现（渐进增强）。
 
 标准 Vue 可以在有或没有构建步骤的情况下使用。当使用构建设置时（例如使用单文件组件），我们预编译所有模板，因此在运行时不需要进行模板处理。
-多亏了 tree-shaking，我们可以在标准 Vue 中提供可选功能，在不使用时不会使您的捆绑包膨胀。
+多亏了 tree-shaking，我们可以在标准 Vue 中提供可选功能，在不使用时不会使你的捆绑包膨胀。
 这是标准 Vue 的最佳使用，但由于它涉及构建设置，因此更适合于构建交互相对频繁的 SPA 或应用程序。
 
 当使用标准 Vue 而不需要构建步骤并安装到 DOM 模板中时，它的最佳性要低得多，因为：
@@ -398,7 +395,7 @@ export default {
 `pvue` 通过遍历现有 DOM 并将细粒度的反应性效果直接附加到元素来避免所有这些开销。DOM 是模板。这意味着“pvue”在渐进增强场景中更有效。
 
 这也是 Vue 1 的工作方式。这里的权衡是，这种方法与 DOM 耦合，因此不适用于平台无关的渲染或 JavaScript SSR。
-我们还失去了处理高级抽象的呈现函数的能力。然而，正如您可能知道的那样，在渐进增强的环境中很少需要这些功能。
+我们还失去了处理高级抽象的呈现函数的能力。然而，正如你可能知道的那样，在渐进增强的环境中很少需要这些功能。
 
 ## 与 Alpine 的差别
 
@@ -420,11 +417,11 @@ and (2) more Vue-compatible.
 ## 安全和 CSP
 
 `pvue`计算模板中的 JavaScript 表达式。这意味着**如果**`pvue`安装在 DOM 中包含来自用户数据的未经清理的 HTML 的区域上，
-则可能会导致 XSS 攻击，**如果您的页面呈现用户提交的 HTML，您应该更喜欢使用 显式装载目标初始化 `pvue`，
-以便它只处理由您控制的部分**。您还可以为`v-data`属性清理任何用户提交的 HTML。
+则可能会导致 XSS 攻击，**如果你的页面呈现用户提交的 HTML，你应该更喜欢使用 显式装载目标初始化 `pvue`，
+以便它只处理由你控制的部分**。你还可以为`v-data`属性清理任何用户提交的 HTML。
 
 `pvue` 使用 `new Function（）`计算表达式，这在严格的 CSP 设置中可能是禁止的。
-没有计划提供一个 CSP 构建，因为它涉及到一个表达式解析器，这违背了轻量级的目的。如果您有严格的 CSP 要求，您可能应该使用标准
+没有计划提供一个 CSP 构建，因为它涉及到一个表达式解析器，这违背了轻量级的目的。如果你有严格的 CSP 要求，你可能应该使用标准
 Vue 并预编译模板。
 
 ## 版权
