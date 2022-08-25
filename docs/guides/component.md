@@ -7,6 +7,7 @@ template 元素是 2013 年定稿用于提供一种更统一、功能更强大�
 通过 template 元素属性 content 获取已实例化的 HTML 元素 (不是字符串而已)：
 
 ```html
+
 <template id="tpl">
   <div>a</div>
   <div>b</div>
@@ -17,13 +18,12 @@ template 元素是 2013 年定稿用于提供一种更统一、功能更强大�
   tpl.content.children[0].outerHTML // <div>a</div>
 </script>
 ```
+
 1. `<template>` 以及其子节点均不可视
 2. `<template>` 下的 img 元素的 src 属性即使有值也不会发出资源请求
 3. `<template>` 下的 script 和 css 规则均不会解析和执行
 
 [内容模板元素](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/template)
-
-
 
 ## 组件
 
@@ -32,6 +32,7 @@ template 元素是 2013 年定稿用于提供一种更统一、功能更强大�
 可以使用函数创建可复用部分的逻辑：
 
 ```html
+
 <template id="comp">
   {{ count }} {{ plusOne }}
   <button @click="count++">++</button>
@@ -95,7 +96,9 @@ template 元素是 2013 年定稿用于提供一种更统一、功能更强大�
 > `<template>`必须搭配 v-if 或 v-for 使用哦
 
 虽然 template 元素能帮助我们优化用户体验和性能，但有些时候也会让我们掉到坑里面，下面一起绕过这些坑吧！
+
 ```html
+
 <div v-data="App"></div>
 
 <script>
@@ -112,29 +115,27 @@ template 元素是 2013 年定稿用于提供一种更统一、功能更强大�
   }).mount('[v-data]')
 </script>
 ```
+
 根块对象对应的是 `<div v-data="App"></div>`，而 `<template>` 由于没有附加 v-if 或 v-for，
 因此不会为其创建新的块对象进行处理，最后得到的 UI 就是这样的：
 
 ```html
+
 <div v-data="App">
   <template>
     <div>Hello</div>
   </template>
 </div>
 ```
+
 无法看到文字 Hello。
-
-
-
-
-
-
 
 ## 状态管理
 
 可以使用该 reactive 方法来创建全局状态：
 
 ```html
+
 <div v-data="{ localCount: 0 }">
   <p>Global {{ store.count }}</p>
   <button @click="store.inc">increment</button>

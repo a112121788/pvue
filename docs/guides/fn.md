@@ -70,8 +70,6 @@ Vue2 是基于 Object.defineProperty 拦截对象属性的读写操作，从而�
 
 reactive 核心工作则是通过 Proxy 将一个普通的 JavaScript 对象转换为监控对象，拦截对象属性的读写删操作，并收集依赖该对象（属性）的副作用函数。
 
-
-
 ### Pvue.version
 
 ```html
@@ -98,7 +96,6 @@ reactive 核心工作则是通过 Proxy 将一个普通的 JavaScript 对象转�
 
 ### use
 
-
 您可以编写自定义指令，然后将其作为包分发，然后将它添加到创建 vue 中，如：
 
 ```html
@@ -110,6 +107,7 @@ reactive 核心工作则是通过 Proxy 将一个普通的 JavaScript 对象转�
 <script type="module">
   import log from './log'
   import { createApp } from 'https://cdn.jsdelivr.net/gh/a112121788/pvue/dist/pvue.es.js'
+
   createApp().use(log).mount()
 </script>
 ```
@@ -126,7 +124,6 @@ export default {
   }
 }
 ```
-
 
 ### unmount
 

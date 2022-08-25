@@ -396,6 +396,7 @@ v-effect 是一个指令，用于执行 pvue 中的内联反应式语句。在�
 ```
 
 ## v-on
+
 绑定事件监听器。事件类型由参数指定。表达式可以是一个方法的名字或一个内联语句，如果没有修饰符也可以省略。
 
 可参考： [https://v2.cn.vuejs.org/v2/api/#v-on](https://v2.cn.vuejs.org/v2/api/#v-on)
@@ -462,7 +463,6 @@ v-effect 是一个指令，用于执行 pvue 中的内联反应式语句。在�
 ## v-ref
 
 ```html
-
 
 
 <div

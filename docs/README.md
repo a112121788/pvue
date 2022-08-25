@@ -10,10 +10,10 @@
 - 响应式系统模块对外暴露 reactive 接口提供构建全局状态管理器的能力；
 - 代码库体积在 gzip 压缩后不到 8KB，十分适合与项目已有的 UI 库搭配使用。
 
-
 pvue 无需构建，直接通过 cdn/url 引入即可，非常方便在由服务端渲染 HTML 页面的项目中集成：
 
 ```html
+
 <script src="https://cdn.jsdelivr.net/gh/a112121788/pvue/dist/pvue.iife.js" defer init></script>
 
 <div v-data="{ count: 0 }">
@@ -34,15 +34,14 @@ pvue 无需构建，直接通过 cdn/url 引入即可，非常方便在由服务
 pvue 源于 [petite-vue](https://github.com/vuejs/petite-vue)，petitle-vue 由尤雨溪亲自操刀设计开发，
 针对历史非前后端分离项目专门打造的，基于 Vue3 的 @vue/reactivity 提供与 Vue 一致的响应式开发模式的渐进式前端开发框架。
 
-
 由于尤雨溪的核心精力在 Vue 主项目，petitle-vue 几乎不再更新，故基于 petitle-vue 开发了本项目，并持续更新。
 
 pvue 尽可能保持与 vue 语法兼容。
 
-
 ## 快速上手
 
 ```html
+
 <script src="https://cdn.jsdelivr.net/gh/a112121788/pvue/dist/pvue.iife.js" defer init></script>
 
 <div v-data="{ count: 0 }">

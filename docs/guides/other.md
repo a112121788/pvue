@@ -5,6 +5,7 @@
 如果分隔符与你当前使用的开发框架冲突，可以自定义分隔符。
 
 ```html
+
 <div v-data="{ count: 1 }">
   <p v-if="count">count is ${ count }!</p>
   <button @click="count++">increase</button>
@@ -26,6 +27,7 @@
 当页面有多个组件都需要使用 Pvue 时，可以使用多个 mount。
 
 ```html
+
 <div id="app1">
   Global count {{ store.count }}
   Local count {{ count }}
@@ -55,7 +57,6 @@
   }).mount('#app2')
 </script>
 ```
-
 
 ## 自定义指令
 
